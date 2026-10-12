@@ -1,15 +1,14 @@
 ---
-name: triz-ideation-en
+name: idea-en
 description: >
-  A TRIZ-based ideation skill for solving stuck problems or when a non-obvious idea or new approach is needed.
-  It first strips out the "safe answer" the AI always gives, then pulls solution candidates from unexpected
-  directions using contradiction formulation, the Ideal Final Result (IFR), a forced sweep of the 40 inventive
-  principles, and extremizing tools. Triggers: "come up with ideas", "is there a new way", "what other approaches
-  are there", "I'm stuck", "not the obvious answer", "shift my thinking", "out-of-the-box", "TRIZ",
-  "resolve the contradiction", and the Korean phrases "아이디어 내줘", "새로운 방법 없을까", "다른 접근 뭐가 있어",
-  "막혔어", "뻔한 답 말고", "발상 전환", "트리즈로", "모순 해결". NOT targets: requirements interviews,
-  implementation planning, plan review, code bug diagnosis, scheduling. Use this skill only to
-  "generate new candidates for a problem where no answer comes".
+  Ideation skill for when you need ideas: contrarian or reverse-thinking, innovative, fresh or creative ideas, "just
+  give me some ideas", a non-obvious approach, or a new way out of a stuck problem. Under the hood it uses TRIZ to strip
+  out the AI's "safe answer" first, then forces candidates from unexpected directions (contradictions, Ideal Final
+  Result, 40 inventive principles, extremizing). The user does not need to know TRIZ. Triggers: "give me ideas",
+  "contrarian idea", "innovative idea", "fresh idea", "is there a new way", "I'm stuck", "not the obvious answer",
+  "out-of-the-box", "TRIZ", and Korean: "아이디어 내줘", "아이디어 만들어줘", "역발상", "혁신적인 아이디어",
+  "참신한 아이디어", "새로운 방법 없을까", "막혔어", "뻔한 답 말고", "발상 전환", "트리즈로". NOT for requirements
+  interviews, implementation planning, plan review, code bug diagnosis, or scheduling.
 ---
 
 # TRIZ Ideation
@@ -87,25 +86,26 @@ and effect (does it really solve the problem), then fill the recommendations lik
 
 ## Output format (in this order, conclusion first)
 
-The only visible headings are the card titles and "Next steps", "Reasoning" and "Appendix". Never write internal labels anywhere, such as "One-line conclusion", "Recommendation slots",
+The only visible headings are the card titles and "📋 At a glance", "Next steps", "Reasoning" and "Appendix". Never write internal labels anywhere, such as "One-line conclusion", "Recommendation slots",
 the mode name, the number of principles, or "closest common answer / what differs in mechanism".
 
 1. **Conclusion** — "Start with ○○ first. The reason is △△." Write one bold sentence on the very first line with no label or heading.
    Do not list assumptions at length; put them in one line in section 4.
-2. **Four recommendation cards (①, ②, ③, wildcard)** — each card in the format below (within 6 lines). Card titles are a number and a name like "① Idea name";
-   the wildcard is "Wildcard: idea name". Do not use TRIZ terms or principle names. The reader must be able to decide and act from this section alone. Follow the **plain-language rules** under "Writing in plain language" below.
-   Provide the field labels and the three section headings in the user's language: translate "What to do", "Why it fits", "Where it fails", "First experiment", "Next steps", "Reasoning" and "Appendix".
+2. **At-a-glance table + four recommendation cards (①, ②, ③, wildcard)** — first one table titled "📋 At a glance" (columns: idea, one-line summary (about 6 words), start; one row per card).
+   The start column is 🟢 start tomorrow / 🟡 within this month / 🔴 risky, test small (the wildcard is always 🔴). Then each card in the format below (within 6 lines).
+   Card titles are a number, a name and the signal like "① Idea name 🟢"; the wildcard is "🎲 Wildcard: idea name". Separate cards with `---`. Do not use TRIZ terms or principle names. The reader must be able to decide and act from this section alone. Follow the **plain-language rules** under "Writing in plain language" below.
+   Provide the field labels and the three section headings in the user's language: translate "At a glance", "What to do", "Why it fits", "Where it fails", "First experiment", "Next steps", "Reasoning" and "Appendix".
    ```
    ### ① Idea name (one line)
-   - What to do: one or two sentences, who does what and how
-   - Why it fits: how it respects the constraint I stated (○○) + how it differs from the common answer "□□" (one sentence)
-   - Where it fails: the weakest assumption this idea rests on
-   - First experiment: who, for how long → what number means continue
+   - 🛠️ What to do: one or two sentences, who does what and how
+   - 🎯 Why it fits: how it respects the constraint I stated (○○) + how it differs from the common answer "□□" (one sentence)
+   - ⚠️ Where it fails: the weakest assumption this idea rests on
+   - 🧪 First experiment: who, for how long → what number means continue
    ```
 3. **Next steps** — within 3 lines. If the cause of the problem is still unknown, the first line is "check as cheaply as possible whether the cause matches my guess."
 4. **Reasoning (short)** — within 8 lines in total: the problem redefinition, the contradiction pair, the user's constraint list, and for each recommendation one line on how it resolved the contradiction or where it came from (resource or tool).
 5. **Appendix (within 12 lines)** — the safe-answer list and the titles of divergent ideas (`[principle name] idea`). Use technical terms only here,
-   and explain each in parentheses the first time it appears. Do not use arrows or symbols; write sentences.
+   and explain each in parentheses the first time it appears. Do not use arrows or emoji; write sentences (emoji only in the table and card labels).
 
 **Length:** no more than about 1,000 words in quick mode, about 1,800 words in deep mode. If over, cut the appendix first. Sections 1–3 are at least 70% of the text.
 Quality is the clarity of sections 1–2, not length.

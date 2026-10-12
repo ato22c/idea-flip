@@ -5,7 +5,7 @@
 
 각 문제(eval/problems.json의 id)마다 같은 모델·같은 최소 지시로 두 번 실행한다.
   baseline: 최소 지시만
-  skill   : 최소 지시 + skills/triz-ideation/SKILL.md + reference/*.md 전문(도구를 못 쓰므로 본문에 붙인다)
+  skill   : 최소 지시 + skills/idea/SKILL.md + reference/*.md 전문(도구를 못 쓰므로 본문에 붙인다)
 결과는 eval/human/pairs/<id>/{problem.txt, baseline.md, skill.md}에 저장된다.
 저장소 밖의 빈 임시 폴더에서 실행한다.
 """
@@ -14,7 +14,7 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 EVAL = HERE.parent
-SKILL = EVAL.parent / "skills" / "triz-ideation"
+SKILL = EVAL.parent / "skills" / "idea"
 BASE_SYS = "너는 사용자의 질문에 한국어로 답하는 도우미야. 사용자에게 되물을 수 없으니 필요한 가정은 답변에 적고 바로 답해줘."
 
 
@@ -46,7 +46,7 @@ def main():
     ap.add_argument("ids", nargs="+")
     ap.add_argument("--model", default="claude-fable-5-1")
     ap.add_argument("--out-dir", default=None, help="지정하면 pairs/ 대신 <out-dir>/<id>_<arm>.md 로 저장(기존 결과를 덮어쓰지 않음)")
-    ap.add_argument("--skill-dir", default=None, help="스킬 폴더(기본: skills/triz-ideation). 옛 버전과 비교할 때 지정")
+    ap.add_argument("--skill-dir", default=None, help="스킬 폴더(기본: skills/idea). 옛 버전과 비교할 때 지정")
     ap.add_argument("--arms", nargs="+", default=["baseline", "skill"], choices=["baseline", "skill"], help="다시 만들 쪽만 고를 수 있다")
     a = ap.parse_args()
     problems = {p["id"]: p for p in json.loads((EVAL / "problems.json").read_text(encoding="utf-8"))}

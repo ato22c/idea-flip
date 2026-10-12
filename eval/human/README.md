@@ -20,7 +20,7 @@ AI 채점의 한계를 넘기 위한 사람용 평가 페이지입니다. 문제
 2. 그 안에 파일 3개:
    - `problem.txt` — 문제 원문
    - `baseline.md` — 스킬 **없이** AI가 답한 결과 (그냥 문제만 주고 받은 답)
-   - `skill.md` — `skills/triz-ideation`을 **따라** AI가 답한 결과
+   - `skill.md` — `skills/idea`을 **따라** AI가 답한 결과
 3. `python eval/human/build.py` 로 `index.html`을 다시 만듭니다(`--seed 숫자`로 A/B 배정을 고정할 수 있음).
 
 > 공정하게 비교하려면 두 답을 **같은 모델·같은 조건**에서 받으세요. 되묻지 못하게 하고 가정만 적게 하면 평가가 깔끔합니다.
