@@ -7,7 +7,8 @@ description: >
   Result, 40 inventive principles, extremizing). The user does not need to know TRIZ. Triggers: "give me ideas",
   "contrarian idea", "innovative idea", "fresh idea", "is there a new way", "I'm stuck", "not the obvious answer",
   "out-of-the-box", "TRIZ", and Korean: "아이디어 내줘", "아이디어 만들어줘", "역발상", "혁신적인 아이디어",
-  "참신한 아이디어", "새로운 방법 없을까", "막혔어", "뻔한 답 말고", "발상 전환", "트리즈로". NOT for requirements
+  "참신한 아이디어", "고정관념 깨는", "새로운 방법 없을까", "막혔어", "뻔한 답 말고", "발상 전환", "트리즈로", and "모순 해결"
+  when it means finding a new approach (not data conflicts or merge conflicts). NOT for requirements
   interviews, implementation planning, plan review, code bug diagnosis, or scheduling.
 ---
 
@@ -38,6 +39,7 @@ If the user does not say, use quick. If the result is thin, ask on the last line
 **0. Input** — Answer entirely in the language the user wrote in, including card titles, field labels (What to do / Why it fits / Where it fails / First experiment), section headings (Next steps / Reasoning / Appendix) and principle tags, translating principle names into that language. Never mix English labels into a non-English answer.
 Ask questions only when the goal is too vague to state in one sentence (at most 3: goal, constraints, what has been tried).
 Otherwise do not ask: write down your assumptions and proceed. Put whatever the user has already tried on the ban list first.
+**Ideate independently.** Do not anchor on ideas or solutions that appeared earlier in this conversation or in the session's project notes; generate as if starting fresh. Follow any formatting or tone the user explicitly asked for. Keep using only the facts and constraints the user stated, and put any solution already proposed earlier in the conversation on the ban list.
 
 **1. Redefine as a function** — State "what are we trying to achieve" in one sentence, with no solution nouns.
 Ask "why?" twice to widen the goal; if the wider goal can be solved, switch to that sentence.
@@ -60,7 +62,7 @@ At least 1 of recommendations ①②③ must directly resolve one side of the co
 do not force a link; instead write one line on where it came from (which resource from step 3, which extremizing tool).
 
 **5. Forced divergence** — Apply the principles to the problem one by one over the mode's sweep range and write ideas.
-- Tag each idea `[principle name]`. Tag only an idea that **actually started** from that principle's prompt question.
+- Generate from the principle's prompt question, not from earlier ideas in the conversation. Tag each idea `[principle name]`. Tag only an idea that **actually started** from that principle's prompt question.
   Thinking of the idea first and then attaching a fitting principle is forbidden.
   If it is a stretch, leave `SKIP(reason)` and move on. 2–3 SKIPs in a sweep is normal.
 - Write absurd ideas too. Deleting an idea for being "unrealistic" is forbidden at this stage.
@@ -82,19 +84,19 @@ and effect (does it really solve the problem), then fill the recommendations lik
   if you cannot write □□, treat it as a variant and move it down to ① or to a supporting idea.
 - Attach to each idea **one condition where it fails** and **one first experiment**. The experiment states who tries it, for how long, and what
   number means continue. For ideas that need development, start with a hand-made version (paper mockup, manual sending).
-- Novelty 4 or higher goes to at most half of the candidates, and a 5 to fewer than one.
+- Novelty 4 or higher goes to at most half of the candidates, and a 5 to at most one.
 
 ## Output format (in this order, conclusion first)
 
-The only visible headings are the card titles and the headings for the at-a-glance table, next steps, reasoning and appendix, all named in the user's language (for an English user: "📋 At a glance", "Next steps", "Reasoning", "Appendix"). Never write internal labels anywhere, such as "One-line conclusion", "Recommendation slots",
+The only visible headings are the card titles and the headings for the at-a-glance table, next steps, team questions (only when used), reasoning and appendix, all named in the user's language (for an English user: "📋 At a glance", "Next steps", "Reasoning", "Appendix"). Never write internal labels anywhere, such as "One-line conclusion", "Recommendation slots",
 the mode name, the number of principles, or "closest common answer / what differs in mechanism".
 
 1. **Conclusion** — "Start with ○○ first. The reason is △△." Write one bold sentence on the very first line with no label or heading.
    Do not list assumptions at length; put them in one line in section 4.
-2. **At-a-glance table + four recommendation cards (①, ②, ③, wildcard)** — first one table titled "📋 At a glance" (translate the title; columns: idea, one-line summary (about 6 words), start; one row per card).
+2. **At-a-glance table + four recommendation cards (①, ②, ③, wildcard)** — first one line "🧩 The core conflict: …" that states the conflict in plain words ("doing A makes B worse"; no TRIZ terms, never the word "contradiction"), then one table titled "📋 At a glance" (translate the title; columns: idea, one-line summary (about 6 words), start; one row per card).
    The start column is 🟢 start tomorrow / 🟡 within this month / 🔴 risky, test small (the wildcard is always 🔴). Then each card in the format below (within 6 lines).
    Card titles are a number, a name and the signal like "① Idea name 🟢"; the wildcard is "🎲 Wildcard: idea name" — translate the word "Wildcard" but never rename or drop it (no "surprise card" or "wild idea"), and use the same word in its table row. Separate cards with `---`. Do not use TRIZ terms or principle names. The reader must be able to decide and act from this section alone. Follow the **plain-language rules** under "Writing in plain language" below.
-   Write every heading, table header and field label in the user's language; if that language is not English, no English label may remain anywhere in the answer, so check the headings once before sending. Translate "At a glance", "What to do", "Why it fits", "Where it fails", "First experiment", "Next steps", "Reasoning" and "Appendix".
+   Write every heading, table header and field label in the user's language; if that language is not English, no English label may remain anywhere in the answer, so check the headings once before sending. Translate "The core conflict", "At a glance", "What to do", "Why it fits", "Where it fails", "First experiment", "Next steps", "Reasoning" and "Appendix".
    ```
    ### ① Idea name (one line)
    - 🛠️ What to do: one or two sentences, who does what and how
@@ -104,9 +106,11 @@ the mode name, the number of principles, or "closest common answer / what differ
    ```
    The wildcard card uses the same fields but its title line is exactly "### 🎲 Wildcard: idea name" and its table row starts with "| 🎲 Wildcard: idea name" (translate only the word "Wildcard", in both places).
 3. **Next steps** (translate this heading into the user's language) — within 3 lines. If the cause of the problem is still unknown, the first line is "check as cheaply as possible whether the cause matches my guess."
-4. **Reasoning (short)** (translate this heading too) — within 8 lines in total: the problem redefinition, the contradiction pair, the user's constraint list, and for each recommendation one line on how it resolved the contradiction or where it came from (resource or tool).
+   Only when the problem is about a team, a meeting or a group decision, add a short block "Questions to ask the team" (translate the heading): 2 or 3 one-sentence questions the reader can ask out loud, each tailored to this problem, covering (a) how we could make this fail on purpose, then do the opposite, (b) what we would try if one constraint (budget, time, a rule) vanished, (c) which idle resource or leftover we are ignoring.
+4. **Reasoning (short)** (translate this heading too) — within 8 lines in total: the problem redefinition, your assumptions and the user's constraint list, and for each recommendation one line on how it resolved the core conflict or where it came from (resource or tool).
 5. **Appendix (within 12 lines)** (translate this heading too) — the safe-answer list and the titles of divergent ideas (`[principle name] idea`). Use technical terms only here,
    and explain each in parentheses the first time it appears. Do not use arrows or emoji; write sentences (emoji only in the table and card labels).
+   End the appendix with the two most novel ideas you set aside, one line each with the reason (for example "too costly" or "needs the leader's consent"), so the reader can revive them.
 
 **Length:** no more than about 1,000 words in quick mode, about 1,800 words in deep mode. If over, cut the appendix first. Sections 1–3 are at least 70% of the text.
 Quality is the clarity of sections 1–2, not length.
