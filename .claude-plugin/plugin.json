@@ -1,0 +1,10 @@
+{
+  "name": "idea",
+  "description": "Strips out the AI's safe, obvious answers first, then forces non-obvious ideas with a cheap first experiment each. TRIZ under the hood. 뻔한 답을 걷어내고 역발상·참신한 아이디어를 만드는 스킬.",
+  "version": "0.26.0",
+  "author": { "name": "ato22c" },
+  "homepage": "https://github.com/ato22c/triz-ideation-skill",
+  "repository": "https://github.com/ato22c/triz-ideation-skill",
+  "license": "MIT",
+  "keywords": ["ideation", "brainstorming", "triz", "creativity", "skill"]
+}

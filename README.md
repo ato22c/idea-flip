@@ -1,229 +1,86 @@
-# idea — 역발상·참신한 아이디어를 만드는 AI 스킬 (속은 TRIZ)
+# 💡 idea — skip the obvious answer, get a genuinely different idea
 
-> **"더 열심히 생각해"가 아니라 "출발점을 강제로 바꿔"** — 막힌 문제에서 AI가 늘 내놓는 무난한 답 너머의 후보를,
-> 내일 시작할 수 있는 실험과 함께 받습니다.
+**한국어: [README.ko.md](README.ko.md)**
 
-창의력이 부족한 사람이 AI를 써도 아이디어가 잘 안 나오는 건 AI의 추론력이 아니라 **접근 방식(출발점)** 의 문제라는
-가설에서 출발했습니다. AI는 가장 그럴듯한(= 가장 흔한) 답으로 수렴하니까, 생각을 더 시키는 대신
-**TRIZ의 절차로 출발점을 강제로 바꿉니다.**
+> Ask an AI for ideas and you get the same safe answers every time.
+> This skill **writes the obvious answers down first and bans them**, forces candidates from unexpected directions,
+> and attaches **a cheap first experiment you can start tomorrow**. (TRIZ under the hood — you don't need to know it.)
 
-Claude Code / Claude Skills 형식(`SKILL.md`)입니다. **스킬 하나(`idea`)** 로 한국어·영어 모두 지원하고(지침은 영어, 답은 사용자가 쓴 언어로), 다른 에이전트에도 문서 그대로 붙여 쓸 수 있습니다.
+A skill for Claude Code. It answers in the language you write in (Korean or English).
 
-## 이 스킬의 장점
+## What you get
 
-| | 보통 "아이디어 내줘" | 이 스킬 |
-|---|---|---|
-| 출발점 | AI가 끌리는 대로 | **40가지 발명원리를 배정대로** (억지면 SKIP으로 기록) |
-| 뻔한 답 | 섞여서 나옴 | **먼저 적어서 금지 목록으로** — 그 변형은 새 안으로 치지 않음 |
-| 추천 | 목록 나열 | **내일 시작할 안 1개 + 새로운 안 2개 + 와일드카드**, 결론이 맨 첫 줄 |
-| 각 안 | 아이디어만 | **안 통하는 조건 + 숫자 기준이 있는 싼 첫 실험** |
-| 문제 파악 | 바로 해법 | **원인 한 줄(틀렸을 때 답이 어떻게 바뀌는지까지)** + 골칫거리를 거꾸로 쓸 자원으로 |
-| 말투 | 전문용어 | TRIZ를 모르는 사람도 읽히게 (용어는 근거·부록에서만, 풀어서) |
-| 신뢰 | 알 수 없음 | **블라인드 AI 채점 + 사람 평가를 공개**, AI 점수와 어긋난 점도 그대로 적음 |
+Input: *"Our weekly meeting is 90 minutes and boring, but we can't cancel it."* — real output, trimmed ([full text](eval/runs/v26/meeting_en.md)):
 
-## TRIZ가 뭔가요? (3분 설명)
+> **Keep the 90-minute slot, but stop making all 10 people listen to everyone's status. Collect status in writing before the meeting, and use the live time only for the few places where two people's work touches.**
+>
+> 🧩 The core conflict: if everyone hears everything, nobody duplicates work but everyone is bored. If we cut the listening, people get bored less but lose track of each other.
+>
+> | Idea | One-line summary | Start |
+> |---|---|---|
+> | ① Written status, live overlaps only | Fill a sheet first, discuss only matches | 🟢 start tomorrow |
+> | ② The weekly matchmaker | One person reads all 10 and picks the pairs | 🟡 within this month |
+> | ③ Present your partner's work | Pairs interview, then report each other | 🟡 within this month |
+> | 🎲 Wildcard: the meeting is the gate | New work only starts after it is claimed there | 🔴 risky, test small |
+>
+> **① 🧪 First experiment:** whole team, 2 weeks. Continue if at least 8 of 10 fill the sheet on time and the team finds at least 1 overlap per week.
+> **⚠️ Where it fails:** people skip the sheet or write vague lines like "various tasks."
 
-TRIZ(트리즈)는 러시아의 발명가 알트슐러가 수많은 특허를 분석해서 "발명에는 반복되는 패턴이 있다"는 걸 정리한
-문제 해결 이론입니다. 그중 이 스킬이 쓰는 핵심은 다섯 가지입니다.
+Every idea comes with *where it fails* and *a cheap experiment with a numeric bar*. The wildcard is always flagged risky.
 
-| 개념 | 한 줄 설명 | 예 (푸시 알림 문제) |
-|---|---|---|
-| **모순** | "A를 좋게 하면 B가 나빠진다"를 피하지 말고 정확히 적기 | 알림을 늘리면 재방문은 늘지만 끄는 사람도 는다 |
-| **이상적 최종결과(IFR)** | "비용·장치 없이 목적이 저절로 달성된다면?"을 먼저 그려 보기 | 알림 없이도 사용자가 돌아온다 |
-| **자원** | 이미 공짜로 있는 것(사람·시간·데이터·낭비물·유휴 공간) 찾기 | 알림을 끈 사용자 자체, 앱 종료 순간 |
-| **분리** | 서로 부딪히는 요구를 시간·공간·조건·수준으로 나눠서 둘 다 만족시키기 | 사람에 따라 알림 양을 다르게 |
-| **40가지 발명원리** | 수많은 해법에서 뽑은 40가지 발상 방향(분할·사전 조치·거꾸로 하기 등) | "미리 조치하기" → 앱을 닫을 때 다음 알림 시간을 고르게 |
+Side-by-side "without the skill vs with the skill" answers are in [`eval/human/pairs/`](eval/human/pairs) (the test problems there are in Korean).
 
-**왜 AI에 잘 맞나:** AI는 "좋은 답을 골라라"에 약하고 "이 방향으로 해 봐라"에 강합니다. 40원리는 사람이 평소 가지 않는 방향을
-**목록으로 강제**해 주는 장치라, 가장 흔한 답 근처를 맴도는 AI의 습관을 깰 수 있습니다.
+## Install (1 minute)
 
-**일부러 안 쓴 것:** TRIZ의 39×39 모순 행렬은 공학 지표를 전제로 하고, 칸 내용을 기억으로 채우면 날조가 됩니다. 그래서 행렬 대신
-원리를 하나씩 문제에 대 보는 방식을 쓰고, 28~39번처럼 원래 물리·화학 원리는 억지로 맞추지 않고 SKIP합니다.
+**Option 1 — plugin (recommended)**
 
-## 와일드카드 — 이 스킬의 혁신 포인트
+```
+/plugin marketplace add ato22c/triz-ideation-skill
+/plugin install idea@triz-ideation-skill
+```
 
-추천은 4칸입니다. **① 내일 시작할 안**은 현실적으로, **②③ 새로운 안**은 흔한 답과 작동 원리가 다르게, 그리고 마지막 한 칸은
-**와일드카드(가장 엉뚱한 안)** 전용입니다.
-
-- **현실성에서 해방된 칸:** ①②③이 실행을 책임지니까 와일드카드는 "말이 되는 한도 안의 가장 이상한 방향"까지 갈 수 있습니다.
-- **엉뚱함을 현실로 잇는 다리:** 6단계에서 가장 황당한 아이디어 3개에서 *핵심 메커니즘 한 줄*만 뽑아, 그것만 살린 현실 버전을 만듭니다.
-- **위험을 숨기지 않는 안전장치:** 와일드카드는 항상 "위험하다"고 밝히고, **싼 실험**(누가·얼마 동안·어떤 숫자면 계속)을 붙입니다.
-- **가짜 새로움 차단:** "가장 비슷한 흔한 답과 작동 원리가 어디서 다른가"를 쓰지 못하면 와일드카드 자격이 없고 변형으로 내려갑니다.
-
-실제 실행 결과에서 나온 와일드카드(원문은 [`eval/runs/`](eval/runs)):
-
-| 문제 | 와일드카드 | 한 줄 요약 |
-|---|---|---|
-| 전통시장 20~30대 방문객 | **상인 얼굴 스티커** (v14) | 상인의 말버릇을 캐릭터 스티커로 만들어, 상인을 바꾸지 않고 시장의 얼굴로 쓴다 |
-| AI 코딩 에이전트의 엉뚱한 파일 수정 | **변경을 하나씩 빼 보고 테스트 돌리기** (v14) | 범위를 미리 막지 않고, 사후에 필요 없는 변경만 걷어낸다 |
-| 푸시 알림 | **사람이 보내는 알림만 허용** (v13) | 앱이 보내는 알림 대신 친구·사용자가 보낸 알림만 보낸다 |
-
-> **정직한 한계:** 이 슬롯이 "새로움"을 실제로 올렸다는 측정은 아직 없습니다. 사람 평가에서 v11의 새로움은 스킬 없음과 비슷했고(3.33 vs 3.00),
-> 스킬 없이 답한 경우에도 좋은 아이디어가 나오는 문제가 있었습니다(예: AI 에이전트 문제에서 사후 변경 검증은 스킬 없는 답에도 있었음).
-> 이 스킬이 약속하는 것은 "더 창의적"이 아니라 **"흔한 답을 먼저 걷어내고, 엉뚱한 안을 위험·실험과 함께 받는 절차"** 입니다.
-
-## 무엇을 하나
-
-1. **기능으로 재정의 + 원인 한 줄** — "무엇을 이루려는가"를 해법 없이 한 문장으로, 문제가 왜 생기는지(짐작이면 틀렸을 때 답이 어떻게 바뀌는지)도 한 줄
-2. **뻔한 답 먼저 버리기** — 흔한 답을 적어 *금지 목록*으로 만들고, 그 변형은 새 아이디어로 치지 않음
-3. **IFR + 자원** — "장치 없이 저절로 해결되면?" + 이미 공짜로 있는 자원 찾기(골칫거리·제약을 거꾸로 쓸 수 있는지 포함)
-4. **모순 정식화** — "A를 좋게 하면 B가 나빠진다" → 시간·공간·조건·수준 분리
-5. **강제 발산** — 40가지 발명원리를 AI가 고르지 않고 *배정대로* 문제에 대 봄(억지면 SKIP 기록) + 극단화 도구
-6. **다리 놓기** — 황당한 아이디어에서 핵심 원리만 뽑아 현실 버전으로
-7. **수렴** — 추천(내일 시작할 안 1개 + 새로운 안 2개) + 와일드카드, 안마다 한계와 *숫자로 된 성공 기준이 있는 싼 실험*. 모순과 이어지지 않는 안은 억지로 잇지 않고 어디서 나왔는지(자원·도구)를 밝힘
-
-결과물은 **결론 먼저**(추천안 → 다음 행동 → 근거 → 부록)로 나오고, 추천 부분에는 TRIZ 용어를 쓰지 않습니다.
-
-## 설치
+**Option 2 — copy the files**
 
 ```bash
-# Claude Code (사용자 전역)
-cp -r skills/idea ~/.claude/skills/
-# 또는 프로젝트 안
-cp -r skills/idea <프로젝트>/.claude/skills/
+git clone https://github.com/ato22c/triz-ideation-skill
+cp -r triz-ideation-skill/skills/idea ~/.claude/skills/
 ```
 
-지침은 영어로 쓰여 있지만 **사용자가 쓴 언어로 답합니다.** 한국어로 물으면 제목·표·라벨까지 한국어로 나오는지 확인했습니다(아래 v16 참고).
-설명에는 한국어 트리거("아이디어 내줘", "역발상", "뻔한 답 말고" 등)가 들어 있어 한국어 요청에도 반응합니다.
-v15까지 쓰던 **한국어 전용판**은 git 태그 `v15-ko-native`로 보존했습니다.
+## Usage
 
-## 사용법
-
-슬래시로 부르거나, 그냥 말로 해도 됩니다. **TRIZ를 몰라도 되고**, 이렇게 말하면 됩니다: "역발상 아이디어 만들어줘", "혁신적인 아이디어", "참신한 아이디어", "그냥 아이디어 좀 내줘", "뻔한 답 말고 다른 방법".
+Call it with a slash, or just ask in plain words.
 
 ```
-/idea 책상이 3일이면 다시 어질러져요. 정리 습관 말고 다른 방법 없을까요?
-/idea Our weekly meeting is 90 minutes and boring, but we can't cancel it.   # 영어로 물으면 영어로 답함
+/idea Our weekly meeting is 90 minutes and boring, but we can't cancel it.
+Give me a contrarian idea for getting 20-somethings into our local market
+I'm stuck — not the obvious answer, please
 ```
 
-이후 "이 문제 뻔한 답 말고 다른 접근 없을까?", "트리즈로 아이디어 내줘", "막혔어, 발상 전환 좀" 처럼 말하면 됩니다.
-"제대로 깊게 해줘"라고 하면 40원리 전체를 훑는 *깊게* 모드로 돌아갑니다(기본은 *빠르게*).
+- Default is **quick** mode. Say "go deep" to sweep all 40 inventive principles.
+- For team/meeting problems it also gives you **questions to ask the team**.
 
-## 구성
+## What's different
 
-```
-skills/idea/                 (/idea) 한국어·영어 공용
-  SKILL.md                 절차·출력 형식 (짧게)
-  reference/principles.md  40원리 + 비물리 분야용 발상 질문 + 5개 방향 분류
-  reference/tools.md       IFR·자원·모순·분리·극단화 도구(STC, 9 windows, 역발상, 유추, 전제 뒤집기)
-eval/                      시험문제·채점표·블라인드 채점 하네스·회차별 원본 답안과 채점 결과
-```
+1. **Ban the obvious first** — common answers are listed as a banned list; variations don't count as new ideas
+2. **Forced starting points** — the 40 inventive principles are *assigned*, not chosen by the model
+3. **Wildcard** — one deliberately odd idea, always labeled risky, with a cheap test attached
+4. **Ends in an experiment** — every idea gets a "won't work if…" and a numeric first test
 
-## 평가 — 시험문제를 만들어 점수화하고 10번 다듬음 (이후 v11~v14는 아래 따로)
+## Honest limits
 
-- **시험문제:** 서로 다른 영역 6문제(물리 제품 / 소프트웨어 / 조직 / 일상 / 지역 서비스 / AI 개발도구).
-  4문제(dev)로 개선하고 2문제(holdout)는 최종 후보 검증에만 사용.
-- **비교:** 같은 문제를 (a) 스킬 없이 (b) 스킬을 따라 답하게 한 뒤, 별도 모델이 **어느 쪽이 스킬 답안인지 모른 채** 100점 만점 채점
-  ([채점표](eval/rubric.md): 재정의·모순 20 / 비전형성 25 / 다양성 15 / 구체성·검증 20 / 정직성 10 / 전달력 10).
-- **모델:** 답변 생성 Claude Sonnet, 채점 Claude Opus.
-- 모든 회차의 원본 답안과 채점 JSON은 [`eval/runs/`](eval/runs)에 있습니다.
+- In blind AI grading the skill scored far higher (86 vs 46), but **human evaluation was one person** and the results were mixed.
+  So the claim is not "more creative" — it is **"a procedure that removes the common answers first and gives you odd ones with risks and experiments."**
+- Answers are longer than without the skill.
+- Asking the same question repeatedly tends to produce similar ideas.
 
-| 버전 | 이번에 고친 것 | 스킬 | 스킬 없음 | 격차 |
-|---|---|---|---|---|
-| v1 | 초안 | 77.5 | 53.0 | +24.5 |
-| v2 | 추천 절 쉬운 말·한계 필수·변형은 추천 제외 | 87.0 | 46.2 | +40.8 |
-| v3 | 숫자 성공 기준·전제 뒤집기 도구 | 80.5 | 47.2 | +33.3 |
-| v4 | "메커니즘" 정의·변형 검사·분량 상한 | 82.8 | 51.8 | +31.0 |
-| v5 | 모순↔추천안 연결·실험 대조군/규모 | 83.8 | 49.2 | +34.6 |
-| v6 | 발산 로그 부록화·손으로 흉내 내는 실험·언어/되묻기 규칙 | 85.2 | 49.8 | +35.4 |
-| v7 (AI 채점 최고점) | 추천 4안 전부 변형 검사 통과·엉뚱하지만 말 되는 안 2개 이상·모순 못 푸는 안은 추천 제외 | **86.2** | 46.5 | **+39.7** |
-| v8 | 핵심 가정 표시·실험 판정력·10묶음 | 82.0 | 50.8 | +31.2 |
-| v9 | 한 줄 결론·고정 카드 양식 | 80.8 | 48.0 | +32.8 |
-| v10 | 추천 출처 다양화·변형 검사 표 | 82.5 | 49.0 | +33.5 |
-| **v7 홀드아웃** | (튜닝에 쓰지 않은 2문제) | **87.0** | 46.0 | **+41.0** |
+Test problems, rubric, the 26 revisions (including rules that didn't work and were reverted), and all limits: **[docs/EVALUATION.md](docs/EVALUATION.md)** (in Korean).
 
-**98점 목표는 달성하지 못했습니다.** v7 이후 규칙을 더 붙인 v8~v10은 최고점을 3회 연속 넘지 못해(정체) 중단했고,
-가장 높았던 v7 구성으로 되돌렸습니다(v10은 git 태그 `v10-experimental`로 보존). **그러나 사람 평가에서 v7은 AI 점수와 어긋났고, 현재 배포 중인 스킬은 그 결과를 반영해 이어서 고친 v14입니다(아래).**
-관측된 축별 최고 점수를 다 합쳐도 89점 안팎이어서, "좋은 답이 60점대"로 엄격하게 잡은 이 채점표에서 98점은 사실상 천장 밖입니다.
-채점자를 후하게 만들어 점수를 올리는 것은 의미가 없어 하지 않았습니다.
+## References
 
-## 사람 평가 결과 — AI 점수와 어긋났고, 그래서 고쳤습니다
+- Altshuller's 40 Inventive Principles; non-physical interpretations were rewritten in this repo's own words, drawing on Mann & Domb and Kevin Rea.
+- [truinorva/triz-skills](https://github.com/truinorva/triz-skills), [smixs/creative-director-skill](https://github.com/smixs/creative-director-skill), [athola/claude-night-market](https://github.com/athola/claude-night-market) — ideas only, no code or text copied.
+- [Verbalized Sampling (arXiv 2510.01171)](https://arxiv.org/abs/2510.01171) — the mode-collapse problem this skill targets.
 
-평가자 1명이 A/B 블라인드로 비교했습니다(1~5점, 새로움·실행 가능성·이해하기 쉬움·내 문제에 맞음). 사람은 이 스킬의 개발자이며 가설을 알고 있었습니다.
+## License
 
-**1차 — v7, 6문제: 스킬 3승 3패.** AI 채점의 +40점 격차와 크게 달랐습니다. 스킬이 진 문제는 대체로 "과감하지만 해볼 만한가"(실행성·적합성)에서 졌고, 새로움에서는 앞섰습니다.
-
-| 같은 3문제(전통시장·AI 코딩 에이전트·푸시 알림) | 스킬 v7 | 스킬 없음 |
-|---|---|---|
-| 새로움 | **4.33** | 3.00 |
-| 실행 가능성 | 2.67 | **4.00** |
-| 이해하기 쉬움 | 2.67 | **4.00** |
-| 내 문제에 맞음 | 2.33 | **3.67** |
-
-AI 채점표가 비전형성(25점)과 실험 설계를 크게 보상해, 점수에 맞춰 다듬을수록 사람이 중시한 실용성에서 멀어진 것으로 보입니다(점수 최적화의 함정).
-
-**v11 개선(규칙을 더하기보다 교체):** 추천을 "내일 시작할 안 1개 + 새로운 안 2개 + 와일드카드"로 바꾸고, 카드를 "왜 내 상황에 맞나"로 바꾸고, 분량을 약 4천자로 줄이고, 도구 내부 사정이 답에 새지 않게 했습니다. 이때 AI 채점은 일부러 돌리지 않았습니다.
-
-**2차 — v11, 같은 3문제: 스킬 2승 1패.**
-
-| 항목 | 스킬 v11 | 스킬 없음 | (참고) v7 |
-|---|---|---|---|
-| 새로움 | 3.33 | 3.00 | 4.33 |
-| 실행 가능성 | **4.00** | 3.00 | 2.67 |
-| 이해하기 쉬움 | 3.00 | 3.00 | 2.67 |
-| 내 문제에 맞음 | **3.67** | 2.33 | 2.33 |
-
-실행성과 적합성이 크게 올랐지만 **새로움은 줄었습니다**(스킬 없음과 거의 비슷). 실용성을 얻는 대신 처음 목표였던 "엉뚱한 곳에서 나오는 새로움"을 일부 내준 셈입니다.
-
-**이 결과를 읽을 때:** 평가자 1명·3문제라 우연일 수 있습니다. 같은 문제를 다시 봤고, 스킬이 이겼던 문제는 2차에 없어 새로움이 얼마나 더 떨어졌는지 모릅니다. 2차의 스킬 없음 답안은 격리 실행으로 새로 만들어 1차 기준선과 직접 비교할 수 없습니다. 안 본 문제로 여러 사람이 평가한 결과가 필요합니다.
-
-## v12~v26 — 점수 평가는 하지 않고 형식·규칙만 점검했습니다
-
-AI 점수를 올리려고 규칙을 더하면 정체했던 경험(v8~v10) 때문에, 이후에는 **규칙을 더하기보다 문장을 바꾸는 방향**으로만 고쳤고
-점수 채점과 사람 평가는 돌리지 않았습니다. 그래서 아래는 "더 좋아졌다"는 주장이 아니라 **규칙이 지켜지는지 본 점검**입니다.
-
-| 버전 | 바꾼 것 | 점검 |
-|---|---|---|
-| v12 | 쉬운 말 규칙·원인 확인 먼저·분량 3천자·부록 12줄 | 3문제 실행(`eval/runs/v12_opus`) |
-| v13 | 문제의 원인 한 줄·골칫거리를 거꾸로 쓸 자원·모순과 안 이어지면 "어디서 나왔나" 표기 | 4문제 실행. "직접 연결되지 않음" 같은 빈 말이 사라짐 (답안 2건 `eval/runs/v13`) |
-| v14 | 독립 리뷰어(스킬 개발 맥락을 모르는 에이전트)의 지적 반영: 내부 라벨이 제목으로 새는 문제·분량 상한·트리거 설명·언어 규칙 | 4문제(D2·D4·H1·H2) `eval/runs/v14`: 내부 라벨 0건, 분량 2,100~2,300자(상한 3,500자) |
-| v15 | 결과를 보기 좋게: 맨 위 "한눈에 보기" 표, 카드 라벨 이모지, 시작 신호(🟢 내일·🟡 이번 달·🔴 위험), 스킬 이름을 기억하기 쉬운 `/idea`, `/idea-en`으로 단축하고 "역발상·혁신적인·참신한 아이디어" 같은 일상어를 트리거에 추가 | 한국어 1문제·영어 1문제 `eval/runs/v15`: 표·이모지 정상, 부록에는 이모지 없음, 한글 2,862자·영어 1,010단어 |
-| 영문판(v15 시점) | v14를 규칙 누락 없이 영어로 옮김(별도 에이전트가 한글 원문과 대조: 핵심 규칙 누락 0건, 사소한 약화 몇 건은 수정) | 영어 질문 1건 + 한국어 질문 2건 `eval/runs/v14_en`: 영어 질문은 영어로(970단어), 한국어 질문은 한국어로 답하고 영어 라벨 섞임 0건 |
-| v16 | 한국어판과 영문판을 `idea` 하나로 합침(지침은 영어, 답은 사용자 언어). 영어 제목이 한국어 답에 섞이는 문제를 "사용자 언어가 영어가 아니면 영어 라벨이 하나도 남지 않게, 보내기 전에 제목 확인" 한 문장으로 막음 | 같은 한국어 질문을 한국어 전용판 3건 / 합친 초안 6건(영어 제목 2건 누수) / 수정안 6건으로 비교 `eval/runs/v16_*`: 수정안 누수 0/6, 분량 2,500~3,000자 |
-| v17 | 번역할 제목 옆에 "이 제목도 사용자 언어로 번역"을 직접 붙이고, 보내기 전 제목 점검 단계 추가. v16에서 다시 새던 영어 제목(`Next steps` 등)을 겨냥 | 한국어 질문 8건 `eval/runs/v17`: 영어 제목 0건. 다만 와일드카드 카드 이름이 "뜻밖의 카드" 등으로 바뀐 경우 1건 |
-| v18 | 와일드카드 이름을 바꾸거나 빼지 말라는 문장 추가 | 8건 `eval/runs/v18`: 영어 제목 0건, 와일드카드 라벨은 6/8만 지킴(말로만 쓴 규칙은 약했음) |
-| v19 | 카드 양식 아래에 와일드카드 제목과 표 행의 정확한 모양을 직접 적음 | 한국어 5건 + 영어 1건 `eval/runs/v19`: 라벨 6/6, 영어 제목 0건 |
-| v20 | 트리거 단어("고정관념 깨는", "모순 해결")를 설명에 추가 | 설명만 바뀌어 **답은 달라지지 않음**(시험은 파일을 직접 읽혀 돌림). 실제 자동 호출은 아직 못 확인 |
-| v21 | 결론 아래 `🧩 핵심 충돌` 한 줄, **팀·회의 문제에만** `팀에게 던질 질문` 2~3개 추가(두 실험용 프롬프트 비교에서 가져옴) | 5건 `eval/runs/v21`: 충돌 줄 5/5, 팀 질문은 팀 문제 3/3·개인 문제 0/2 |
-| v22 | "앞선 대화에 끌려가지 말고 독립적으로 발상" 지시문 추가 | 오염 대화 4건 `eval/runs/v22`: 지시문 있든 없든 앞선 아이디어에 안 끌려감 → **효과는 확인 못 함**(요청에 따라 유지) |
-| v23~24 | 부록 끝에 "보류한 파격안 2개와 이유" 추가. 와일드카드를 덜 뻔하게 고르게 하는 문구도 시험했으나 효과가 없어 **되돌림** | 같은 회의 문제 6회씩 `eval/runs/v23~v24`: 보류안 0/6 → 5/6, 와일드카드가 "리더 부재"인 비율 4/6 → 4/6(변화 없음) |
-| v25 | "더 줘" 요청 시 이미 쓴 원리를 빼는 회전 규칙을 시험 | 6건 `eval/runs/v25`: 규칙 있든 없든 앞선 카드와 안 겹침 → **효과 없어 제거** |
-| v26 | 자체 리뷰 반영: 새로움 5점 상한이 "1개 미만"(=0개)이던 것을 "최대 1개"로, 독립 지시문이 사용자가 요청한 형식·말투를 무시하지 않게, 가정 위치 정리 | 7건 재시험 `eval/runs/v26`: 영어 제목 0/7, 와일드카드 라벨 7/7, 핵심 충돌 줄 7/7, 보류한 파격안 7/7, 팀 질문은 팀 문제 5/5·그 외 0/2. 회의 문제 와일드카드가 "리더 부재"인 경우는 1/3(이전 4/6)이지만 표본이 작아 우연일 수 있음 |
-
-**읽을 때 주의:** 표본이 문제당 1건이고 같은 문제도 다시 돌리면 다르게 나올 수 있습니다. v13~v14의 새로움·실용성은 사람이 평가하지 않았습니다.
-영어 답변 품질(번역 어색함 등)은 한 건만 봤고, 합친 뒤 한국어 답변의 *내용* 품질을 한국어 전용판과 사람이 비교한 적은 없습니다(형식만 확인).
-
-## 사람이 직접 평가하기
-
-AI 채점만으로는 부족하니, 사람이 A/B를 블라인드로 비교하는 페이지를 넣었습니다 → [`eval/human/`](eval/human/README.md).
-[`index.html`](eval/human/index.html)을 열고 문제마다 더 도움이 된 쪽을 고르면, 끝난 뒤에 어느 쪽이 스킬 답이었는지 공개됩니다.
-
-## 한계 (읽고 판단해 주세요)
-
-- **표본이 작습니다.** 문제당 답안 1개, 회차당 4문제. v2→v3, v7→v8의 하락처럼 ±3~8점은 잡음일 수 있어 절대 점수보다 "같은 회차의 스킬 없음 대비 격차"를 봐 주세요.
-- **채점자도 LLM입니다.** 채점자가 답안 형식만 봐도 스킬 사용 여부를 짐작할 수 있어 완전한 블라인드가 아닙니다. 채점표가 "무난한 답 목록과 다른 메커니즘"을 보상하도록 설계돼 있어 스킬에 유리한 면이 있습니다.
-- **"창의성"의 대리 지표입니다.** 사람이 실제로 더 좋은 아이디어를 얻는지는 다른 문제입니다. 사람 평가는 1명뿐이며(위 참고) 아직 충분하지 않습니다.
-- **같은 질문을 여러 번 돌리면 비슷한 안이 반복됩니다.** 회의 참여 문제 9회에서 카드 36칸 중 상위 4개 안(먼저 쓰기·허술한 초안·리더 없는 시간·반대 담당)이 72%를 차지했고, 와일드카드도 빠르게 모드 7회 중 5회가 "리더 부재"였습니다. 깊게 모드는 카드를 바꾸기보다 부록의 폭을 넓혔습니다.
-- **v12~v26과 한·영 합치기는 점수 채점도 사람 평가도 하지 않았습니다**(위 표 참고). 형식 규칙(영어 제목, 와일드카드 라벨)은 표본이 6~8건이라 "절대 안 샌다"는 뜻이 아닙니다.
-- **깊게 모드(40원리 전체)는 채점하지 않았습니다.** 채점은 빠르게 모드만 했습니다.
-- 스킬을 따르면 답변이 스킬 없음보다 훨씬 깁니다(약 10~14KB vs 3~5KB). 분량 상한을 두었지만 여전히 깁니다.
-- v7은 dev 4문제에서 튜닝된 구성이므로 dev 점수(86.2)는 낙관적이며, 홀드아웃 87.0이 더 믿을 만한 참고치입니다(그래도 n=2).
-- 40원리 중 28~39번은 원래 물리·화학 원리라 비유로 읽어야 하며, 억지면 SKIP하도록 했습니다.
-- 39×39 모순 행렬은 **일부러 넣지 않았습니다**(공학 지표 전제이고 칸을 외워 채우면 날조가 됨).
-
-## 참고한 자료와 벤치마킹
-
-- 트리즈닥터, [트리즈 TRIZ란? 기본개념 및 문제해결 활용](https://blog.naver.com/trizdoctor/223434174901) — 신정호 『트리즈씽킹』 요약.
-  저작자 표시·비영리·변경금지 조건이라 **문장을 옮기지 않고 개념(모순·IFR·자원)만** 참고했습니다.
-- 알트슐러의 40 Inventive Principles(고전 목록). 비물리 분야 해석은 Mann & Domb, *40 Inventive (Business) Principles*와
-  Kevin Rea, *TRIZ and Software — 40 Principle Analogies*(TRIZ Journal)를 참고해 이 저장소가 **자체 표현**으로 다시 썼습니다.
-- 9 windows: [TRIZ Journal, System Operator Tutorial](https://triz-journal.com/system-operator-tutorial-1-9-windows-world/)
-- 벤치마킹한 유사 스킬과 가져온 아이디어(코드·문장 복사 없음):
-  - [truinorva/triz-skills](https://github.com/truinorva/triz-skills) — 지연 로딩 `references/` 구조. 여기에 **고정 출력 형식**과 평가 하네스를 더함
-  - [smixs/creative-director-skill](https://github.com/smixs/creative-director-skill) — 방법 회전, 뻔함(saturation) 감점, 점수 인플레 방지 → **금지 목록·참신도 상한 규칙**
-  - [athola/claude-night-market · tome/triz](https://github.com/athola/claude-night-market/blob/master/plugins/tome/skills/triz/SKILL.md) — IFR→모순→먼 분야 유추 흐름, 모순 행렬의 한계 명시 → **행렬 미사용, 유추 도구**
-  - [Verbalized Sampling (arXiv 2510.01171)](https://arxiv.org/abs/2510.01171) — LLM의 mode collapse(흔한 답 수렴) 문제의식 → **"흔한 답 먼저 버리기"**
-
-## 라이선스
-
-MIT. 단, 위 참고 자료의 원문은 각 저작자의 조건을 따릅니다.
+MIT
