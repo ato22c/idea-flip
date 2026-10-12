@@ -1,129 +1,131 @@
 ---
 name: idea
 description: >
-  아이디어가 필요할 때 쓰는 발상 스킬. 역발상·혁신적인·참신한·기발한 아이디어, 뻔한 답 말고 다른 접근, 막힌 문제의 새 해법이
-  필요할 때 쓴다. 속에서는 TRIZ(문제 해결 이론)로 AI가 늘 내놓는 "무난한 답"을 먼저 걷어내고, 모순 정식화·이상적 최종결과(IFR)·
-  40가지 발명원리 강제 스윕·극단화로 엉뚱한 방향에서 후보를 끌어낸다. 사용자가 TRIZ를 몰라도 된다.
-  트리거 — "아이디어 내줘", "아이디어 만들어줘", "그냥 아이디어 좀", "역발상", "혁신적인 아이디어", "참신한 아이디어",
-  "기발한 방법", "새로운 방법 없을까", "다른 접근 뭐가 있어", "막혔어", "뻔한 답 말고", "발상 전환", "트리즈로",
-  "모순 해결", "out-of-the-box", "TRIZ". 요구사항 인터뷰·구현 계획 수립·계획 검증·코드 버그 진단·일정 계획은
-  대상이 아니다 — 이 스킬은 "새 아이디어 후보를 만들 때"만 쓴다.
+  Ideation skill for when you need ideas: contrarian or reverse-thinking, innovative, fresh or creative ideas, "just
+  give me some ideas", a non-obvious approach, or a new way out of a stuck problem. Under the hood it uses TRIZ to strip
+  out the AI's "safe answer" first, then forces candidates from unexpected directions (contradictions, Ideal Final
+  Result, 40 inventive principles, extremizing). The user does not need to know TRIZ. Triggers: "give me ideas",
+  "contrarian idea", "innovative idea", "fresh idea", "is there a new way", "I'm stuck", "not the obvious answer",
+  "out-of-the-box", "TRIZ", and Korean: "아이디어 내줘", "아이디어 만들어줘", "역발상", "혁신적인 아이디어",
+  "참신한 아이디어", "새로운 방법 없을까", "막혔어", "뻔한 답 말고", "발상 전환", "트리즈로". NOT for requirements
+  interviews, implementation planning, plan review, code bug diagnosis, or scheduling.
 ---
 
-# TRIZ 발상
+# TRIZ Ideation
 
-**목적:** 무난한 답 너머의 후보를 만든다. 원리·근거는 [원리 40](reference/principles.md),
-[도구 모음](reference/tools.md).
+**Purpose:** Produce candidates beyond the safe answer. For principles and sources see [40 principles](reference/principles.md)
+and [tools](reference/tools.md).
 
-## 왜 이렇게 하나
+## Why it works this way
 
-- AI는 가장 그럴듯한 = 가장 흔한 답으로 수렴한다. 더 열심히 생각해도 같은 답 근처를 돈다.
-- 그래서 **출발점을 절차로 바꾼다.** 원리를 AI가 고르지 않고 목록대로 강제 배정하면
-  평소 안 가는 방향에서 출발하게 된다.
-- 규칙 3개: ① 흔한 답을 먼저 적어 버린다 ② 발산 중에는 현실성 평가 금지 ③ 원리는 끌리는 걸
-  고르지 말고 배정대로 쓴다.
+- The AI converges on the most plausible = most common answer. Thinking harder only circles near the same answer.
+- So **replace the starting point with a procedure.** If principles are assigned by list instead of picked by the AI,
+  the starting point moves to directions it normally avoids.
+- Three rules: (1) write down the common answers first and discard them; (2) no realism judging during divergence;
+  (3) use the principle assigned, not the one that appeals.
 
-## 모드
+## Modes
 
-| 모드 | 언제 | 스윕 범위 | 최소 아이디어 |
+| Mode | When | Sweep range | Minimum ideas |
 |---|---|---|---|
-| 빠르게 (기본) | 일상·가벼운 문제, 시간 없음 | 5개 방향에서 각 2개 (총 10개) | 15개 |
-| 깊게 | "제대로", 중요한 결정, 오래 막힌 문제 | 40개 전부 | 30개 |
+| Quick (default) | everyday or light problems, little time | 2 each from 5 directions (10 total) | 15 |
+| Deep | "do it properly", important decisions, long-stuck problems | all 40 | 30 |
 
-사용자가 말하지 않으면 빠르게. 결과가 빈약하면 '다음 행동'의 마지막 줄에서 더 깊게 해 볼지 묻는다.
+If the user does not say, use quick. If the result is thin, ask on the last line of Next steps whether to go deeper.
 
-## 절차
+## Procedure
 
-**0. 입력** — 사용자가 쓴 언어로 전부(카드 제목·태그 포함) 답하고, 원리 이름도 그 언어로 옮긴다. 무엇을 이루려는지 한 문장으로도 못 쓸 만큼 모호할 때만
-질문한다(최대 3개: 목표·제약·이미 해본 것). 그 밖에는 묻지 말고 가정을 적고 바로 진행한다.
-사용자가 이미 해본 것은 금지 목록에 먼저 넣는다.
+**0. Input** — Answer entirely in the language the user wrote in, including card titles, field labels (What to do / Why it fits / Where it fails / First experiment), section headings (Next steps / Reasoning / Appendix) and principle tags, translating principle names into that language. Never mix English labels into a non-English answer.
+Ask questions only when the goal is too vague to state in one sentence (at most 3: goal, constraints, what has been tried).
+Otherwise do not ask: write down your assumptions and proceed. Put whatever the user has already tried on the ban list first.
 
-**1. 기능으로 재정의** — "무엇을 이루려는가"를 해법 명사 없이 한 문장으로.
-"왜?"를 2번 올려 목표를 넓혀보고, 더 넓은 목표에서 풀 수 있으면 그 문장으로 갈아탄다.
-사용자가 말한 **제약**(예산·사람·시간·바꾸면 안 되는 것)을 따로 적어 둔다. 추천안은 이 제약을 지켜야 한다.
-이 문제가 **왜 생기는지** 원인을 한 줄로 적는다("A 때문에 B가 일어난다"). 원인을 모르면 짐작이라고 밝히고,
-그 짐작이 틀렸을 때 답이 어떻게 달라지는지도 한 줄 덧붙인다.
+**1. Redefine as a function** — State "what are we trying to achieve" in one sentence, with no solution nouns.
+Ask "why?" twice to widen the goal; if the wider goal can be solved, switch to that sentence.
+Write down the user's stated **constraints** (budget, people, time, things that must not change) separately. Recommendations must respect them.
+Write the **cause** of why this problem occurs in one line ("Because of A, B happens"). If you do not know the cause,
+say it is a guess, and add one line on how the answer would change if that guess is wrong.
 
-**2. 뻔한 답 덤프** — 아무 장치 없이 떠오르는 답 5~8개를 먼저 적는다. 이것이 **금지 목록**이다.
-이후 금지 목록과 같은 메커니즘은 참신한 아이디어로 치지 않는다.
+**2. Obvious-answer dump** — Before using any device, write the 5–8 answers that come to mind. This is the **ban list**.
+From here on, anything with the same mechanism as a ban-list item does not count as a novel idea.
 
-**3. IFR과 자원** — "이상적으로는 비용·장치 없이 목적이 저절로 달성된다"를 한 문장으로 쓰고,
-이미 공짜로 있는 자원(사람·시간·데이터·낭비물·유휴 공간)을 5개 이상 찾는다.
-그중 **골칫거리·낭비물·제약**(지금은 짐인 것)에서 거꾸로 쓸 수 있는 것을 1개 이상 꼭 포함한다. → [도구](reference/tools.md#ifr과-자원)
+**3. IFR and resources** — Write in one sentence "ideally the goal is achieved by itself, with no cost or device,"
+and find 5 or more resources that already exist for free (people, time, data, waste, idle space).
+Among them, always include at least one from a **nuisance, waste, or constraint** (something that is a burden now) that can be used in reverse. → [tools](reference/tools.md#ifr-and-resources)
 
-**4. 모순 정식화** — ⓐ 기술적 모순: "A를 좋게 하면 B가 나빠진다". ⓑ 물리적 모순: "X는 P여야
-하고 동시에 P가 아니어야 한다". 물리적 모순이면 분리 4종(시간·공간·조건·수준)으로 푼다.
-진짜 모순이 안 보이면 "모순 없음(단순 최적화 문제)"이라 쓰고 5로 간다. 억지로 만들지 않는다.
-모순을 썼다면 추천안마다 "이 모순의 어느 쪽을 어떻게 풀었나"를 근거 절에 한 줄로 적는다.
-추천 ①②③ 중 적어도 1개는 모순의 한쪽을 직접 푸는 안이어야 한다. 모순과 이어지지 않는 안은 억지로 잇지 말고
-"어디서 나왔나"(3번의 어떤 자원, 어떤 극단화 도구)를 대신 한 줄로 적는다.
+**4. Contradiction formulation** — (a) Technical contradiction: "Improving A makes B worse." (b) Physical contradiction: "X must be P
+and at the same time must not be P." For a physical contradiction, resolve it with the four separations (time, space, condition, level).
+If no real contradiction is visible, write "no contradiction (plain optimization problem)" and go to 5. Do not force one.
+If you wrote a contradiction, give each recommendation one line in the Reasoning section on "which side of this contradiction it resolves and how."
+At least 1 of recommendations ①②③ must directly resolve one side of the contradiction. For a recommendation not connected to the contradiction,
+do not force a link; instead write one line on where it came from (which resource from step 3, which extremizing tool).
 
-**5. 강제 발산** — 모드의 스윕 범위대로 원리를 하나씩 문제에 대 보고 아이디어를 쓴다.
-- 아이디어마다 `[원리 이름]` 태그를 붙인다. 태그는 그 원리의 발상 질문에서 **실제로
-  출발한** 아이디어에만 붙인다. 아이디어를 먼저 떠올리고 나서 어울리는 원리를 갖다 붙이는 건 금지.
-  억지면 `SKIP(이유)`로 남기고 넘어간다 — 스윕에서 SKIP이 2~3개 나오는 것이 정상이다.
-- 황당해도 적는다. "현실성이 없어서" 지우는 것은 이 단계에서 금지.
-- 스윕 후 극단화 도구를 **2개 이상** 추가 사용: 크기·시간·비용 0/∞, 9 windows, 거꾸로 하기,
-  먼 분야 유추, 당연한 전제 뒤집기, 자원 없이 시작. → [도구](reference/tools.md#극단화-도구)
-- 같은 메커니즘의 변형은 1개로 센다. 개수를 채우려고 SKIP·변형을 세지 않는다. 발산 목록은 부록에 제목만 남긴다.
+**5. Forced divergence** — Apply the principles to the problem one by one over the mode's sweep range and write ideas.
+- Tag each idea `[principle name]`. Tag only an idea that **actually started** from that principle's prompt question.
+  Thinking of the idea first and then attaching a fitting principle is forbidden.
+  If it is a stretch, leave `SKIP(reason)` and move on. 2–3 SKIPs in a sweep is normal.
+- Write absurd ideas too. Deleting an idea for being "unrealistic" is forbidden at this stage.
+- After the sweep, use **at least 2** extremizing tools: size/time/cost 0/∞, 9 windows, doing it backwards,
+  far-field analogy, flipping obvious assumptions, starting with no resources. → [tools](reference/tools.md#extremizing-tools)
+- Variants of the same mechanism count as 1. Do not count SKIPs or variants to reach the number. Keep only the titles of the divergent list in the appendix.
 
-**6. 다리 놓기** — 가장 황당한 아이디어 3개에서 **핵심 메커니즘 한 줄**을 뽑고, 그것만 살린
-현실 버전을 만든다.
+**6. Bridging** — From the 3 most absurd ideas, pull out **the core mechanism in one line**, and build a
+realistic version that keeps only that.
 
-**7. 수렴** — 후보마다 새로움(무난한 답과의 거리)·해볼 만함(제약 안에서 내일 시작 가능한가)·
-효과(문제를 실제로 푸나)를 1~5로 매기고, 추천을 이렇게 채운다:
-- **① 내일 시작할 안** — 해볼 만함과 효과가 가장 높은 안. 설정 하나·문구 한 줄 같은 작은 조치로
-  시작할 수 있으면 더 좋다. 흔한 답을 날카롭게 고친 것이어도 되지만 사용자가 말한 문제를 실제로 풀어야 한다.
-- **②③ 새로운 안** — 무난한 답 목록과 **작동 원리**가 다르고, 실제로 돌아갈 수 있는 안.
-- **와일드카드** — 가장 엉뚱한 안. 위험하다고 밝히고 싼 실험을 붙인다.
-- **작동 원리 = "무엇이 문제를 없애는가".** 위치·모양·강도·횟수·이름만 다르면 같은 원리다. ②③과
-  와일드카드는 후보마다 속으로 "가장 비슷한 무난한 답: ○○ / 작동 원리가 다른 점: □□"를 적어 보고,
-  □□를 쓸 수 없으면 변형으로 보아 ①이나 보조 아이디어로 내린다.
-- 안마다 **안 통하는 조건** 1개와 **첫 실험** 1개를 붙인다. 실험은 누가·얼마 동안 해 보고 어떤
-  숫자가 나오면 계속할지를 쓴다. 개발이 필요한 안은 손으로 흉내 내는 버전(종이 목업, 수동 발송)부터.
-- 새로움 4점 이상은 후보의 절반 이하로, 5점은 1개 미만으로 준다.
+**7. Convergence** — Score each candidate 1–5 on novelty (distance from the safe answer), doability (can it start tomorrow within the constraints),
+and effect (does it really solve the problem), then fill the recommendations like this:
+- **① An idea to start tomorrow** — the idea with the highest doability and effect. Even better if it can start as a small step, such as one setting
+  or one line of wording. It may be a sharpened version of a common answer, but it must actually solve the problem the user stated.
+- **②③ New ideas** — ideas whose **operating mechanism** differs from the safe-answer list and that can actually work.
+- **Wildcard** — the strangest idea. State that it is risky and attach a cheap experiment.
+- **Operating mechanism = "what removes the problem."** If only position, shape, strength, count, or name differs, it is the same mechanism.
+  For ②③ and the wildcard, silently write for each candidate "closest common answer: ○○ / what differs in mechanism: □□";
+  if you cannot write □□, treat it as a variant and move it down to ① or to a supporting idea.
+- Attach to each idea **one condition where it fails** and **one first experiment**. The experiment states who tries it, for how long, and what
+  number means continue. For ideas that need development, start with a hand-made version (paper mockup, manual sending).
+- Novelty 4 or higher goes to at most half of the candidates, and a 5 to fewer than one.
 
-## 출력 형식 (이 순서, 두괄식)
+## Output format (in this order, conclusion first)
 
-화면에 보이는 제목은 카드 제목과 "📋 한눈에 보기"·"다음 행동"·"근거"·"부록"뿐이다. "한 줄 결론"·"추천 4칸"·모드 이름·원리 개수·
-"가장 비슷한 무난한 답/작동 원리가 다른 점" 같은 내부 표기는 어디에도 쓰지 않는다.
+The only visible headings are the card titles and the headings for the at-a-glance table, next steps, reasoning and appendix, all named in the user's language (for an English user: "📋 At a glance", "Next steps", "Reasoning", "Appendix"). Never write internal labels anywhere, such as "One-line conclusion", "Recommendation slots",
+the mode name, the number of principles, or "closest common answer / what differs in mechanism".
 
-1. **결론** — "먼저 ○○부터 해보세요. 이유는 △△." 굵은 한 문장을 라벨·제목 없이 맨 첫 줄에 쓴다.
-   가정은 길게 늘어놓지 않고 4번에 한 줄로 쓴다.
-2. **한눈에 보기 표 + 추천 4칸(①, ②, ③, 와일드카드)** — 먼저 "📋 한눈에 보기" 표 하나(열: 안·한 줄 요약(20자 안쪽)·시작, 행: 4칸)를 쓴다.
-   시작 열은 🟢 내일 시작 / 🟡 이번 달 안 / 🔴 위험하니 작게 시험(와일드카드는 항상 🔴). 이어서 카드마다 아래 형식(6줄 안쪽).
-   카드 제목은 "① 안 이름 🟢"처럼 번호·이름·신호, 와일드카드는 "🎲 와일드카드: 안 이름"으로 쓰고, 카드 사이는 `---`로 나눈다. TRIZ 용어·원리 이름은 쓰지 않는다. 이 절만 읽고 바로 결정·실행할 수 있어야 한다. **쉬운 말 규칙**은 아래 "쉬운 말로 쓰기"를 따른다.
+1. **Conclusion** — "Start with ○○ first. The reason is △△." Write one bold sentence on the very first line with no label or heading.
+   Do not list assumptions at length; put them in one line in section 4.
+2. **At-a-glance table + four recommendation cards (①, ②, ③, wildcard)** — first one table titled "📋 At a glance" (columns: idea, one-line summary (about 6 words), start; one row per card).
+   The start column is 🟢 start tomorrow / 🟡 within this month / 🔴 risky, test small (the wildcard is always 🔴). Then each card in the format below (within 6 lines).
+   Card titles are a number, a name and the signal like "① Idea name 🟢"; the wildcard is "🎲 Wildcard: idea name". Separate cards with `---`. Do not use TRIZ terms or principle names. The reader must be able to decide and act from this section alone. Follow the **plain-language rules** under "Writing in plain language" below.
+   Write every heading, table header and field label in the user's language; if that language is not English, no English label may remain anywhere in the answer, so check the headings once before sending. Translate "At a glance", "What to do", "Why it fits", "Where it fails", "First experiment", "Next steps", "Reasoning" and "Appendix".
    ```
-   ### ① 안 이름(한 줄)
-   - 🛠️ 뭘 하나: 한두 문장, 누가 무엇을 어떻게
-   - 🎯 왜 내 상황에 맞나: 내가 말한 제약(○○)을 어떻게 지키는지 + 흔한 답 "□□"과 다른 점(한 문장)
-   - ⚠️ 안 통하는 조건: 이 안이 기대는 가장 약한 가정
-   - 🧪 첫 실험: 누가·얼마 동안 → 어떤 숫자면 계속
+   ### ① Idea name (one line)
+   - 🛠️ What to do: one or two sentences, who does what and how
+   - 🎯 Why it fits: how it respects the constraint I stated (○○) + how it differs from the common answer "□□" (one sentence)
+   - ⚠️ Where it fails: the weakest assumption this idea rests on
+   - 🧪 First experiment: who, for how long → what number means continue
    ```
-3. **다음 행동** — 3줄 이내. 문제의 원인을 아직 모르면 첫 줄은 "원인이 내 짐작과 맞는지 가장 싸게 확인하기"로 한다.
-4. **근거(짧게)** — 문제 재정의, 모순 쌍, 사용자의 제약 목록, 추천안마다 모순을 푼 방식이나 나온 곳(자원·도구) 한 줄을 합쳐 8줄 이내.
-5. **부록(12줄 이내)** — 무난한 답 목록, 발산 아이디어 제목(`[원리 이름] 아이디어`). 전문용어는 여기서만
-   쓰고 처음 나올 때 괄호로 푼다. 화살표·이모지는 쓰지 않고 문장으로 쓴다(이모지는 표와 카드 라벨에만).
+3. **Next steps** — within 3 lines. If the cause of the problem is still unknown, the first line is "check as cheaply as possible whether the cause matches my guess."
+4. **Reasoning (short)** — within 8 lines in total: the problem redefinition, the contradiction pair, the user's constraint list, and for each recommendation one line on how it resolved the contradiction or where it came from (resource or tool).
+5. **Appendix (within 12 lines)** — the safe-answer list and the titles of divergent ideas (`[principle name] idea`). Use technical terms only here,
+   and explain each in parentheses the first time it appears. Do not use arrows or emoji; write sentences (emoji only in the table and card labels).
 
-**분량:** 전체 3,500자 이내(빠르게 모드), 깊게 모드는 6,000자 안팎. 넘으면 부록부터 줄인다. 1~3번이 전체의 70% 이상.
-길이가 아니라 1~2번의 선명함이 품질이다.
+**Length:** no more than about 1,000 words in quick mode, about 1,800 words in deep mode. If over, cut the appendix first. Sections 1–3 are at least 70% of the text.
+Quality is the clarity of sections 1–2, not length.
 
-## 쉬운 말로 쓰기
+## Writing in plain language
 
-결과는 그 분야를 잘 모르는 동료가 읽어도 뜻이 통해야 한다. 1~3번(결론·추천·다음 행동)은 특히 그렇다.
+The result must make sense to a colleague who does not know the field. Sections 1–3 (conclusion, recommendations, next steps) most of all.
 
-- 한 문장은 짧게(40자 안팎), 한 문장에 한 가지만 말한다.
-- 한자어·영어 약어·업계 용어보다 일상에서 쓰는 말을 고른다. 사용자가 먼저 쓴 용어는 그대로 써도 되지만,
-  그 밖의 전문용어는 처음 나올 때 한 줄로 풀어 쓴다.
-- 번역투와 추상어("~를 통해 ~를 도모") 대신 누가 무엇을 하는지 주어와 동사로 쓴다.
-- 화살표(→)·슬래시·중첩 괄호·번호 매김을 줄인다. 필요하면 짧은 문장 두세 개로 나눈다.
-- 숫자 기준은 바로 그려지게 쓴다(몇 명 중 몇 명, 며칠 동안, 몇 번 중 몇 번).
-- 결론 문장은 "무엇을 하면 되는지"가 먼저 보이게 쓴다.
+- Keep sentences short (about 20 words or fewer), one idea per sentence.
+- Choose everyday words over jargon, abbreviations and industry terms. A term the user used first can stay, but explain any other
+  technical term in one line the first time it appears.
+- Avoid abstract, stiff phrasing ("leverage to facilitate"); say who does what with a subject and a verb.
+- Cut arrows (→), slashes, nested parentheses and numbered lists. Split into two or three short sentences if needed.
+- Write numeric criteria so they can be pictured at once (how many out of how many people, for how many days, how many times out of how many).
+- Write the conclusion sentence so that "what to do" is visible first.
 
-## 하지 말 것
+## Do not
 
-- 모순 행렬(39×39) 칸을 기억으로 채우지 않는다. 출처 없이 채우면 날조다. 이 스킬은 원리 스윕을 쓴다.
-- 원리를 끼워 맞춘 척하지 않는다. 안 맞으면 SKIP.
-- 사용자가 결정을 못 하게 되는 결과물(길기만 하고 결론 없음)을 내지 않는다. 한 줄 결론이 먼저다.
-- 사용자가 TRIZ를 모른다고 가정한다. IFR·모순·분리·9 windows·원리 번호 같은 말은 4번 이하(근거·부록)
-  에서만 쓰고, 처음 나올 때 괄호로 뜻을 한 줄 푼다. 1~3번(결론·추천·다음 행동)에는 쓰지 않는다.
+- Do not fill contradiction matrix (39×39) cells from memory. Filling them without a source is fabrication. This skill uses the principle sweep.
+- Do not pretend a principle fits. If it does not fit, SKIP.
+- Do not produce output that leaves the user unable to decide (long with no conclusion). The conclusion comes first.
+- Assume the user does not know TRIZ. Terms like IFR, contradiction, separation, 9 windows and principle numbers appear only in section 4 and below (Reasoning, Appendix),
+  with a one-line explanation in parentheses the first time. Never in sections 1–3 (conclusion, recommendations, next steps).

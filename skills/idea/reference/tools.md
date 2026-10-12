@@ -1,66 +1,66 @@
-# 도구 모음
+# Toolkit
 
-## IFR과 자원
+## IFR and resources
 
-**IFR(이상적 최종결과) 문장 틀:** "____가 (비용·장치·수고 없이) 스스로 ____ 한다."
+**IFR (Ideal Final Result) sentence frame:** "____ does ____ by itself (without cost, device, or effort)."
 
-- 시스템을 더하는 발상에서, **시스템 없이 기능만 남기는 발상**으로 옮기는 장치다.
-- IFR이 불가능해 보이면 "어느 부분만 빼도 되나?"로 낮춘다. 가장 그럴듯한 IFR이 아니라
-  가장 과감한 IFR을 먼저 적는다.
+- It is a device for moving from the thinking of adding a system to **the thinking of keeping only the function, with no system**.
+- If the IFR looks impossible, lower it to "which part alone could be dropped?" Write the boldest IFR first,
+  not the most plausible one.
 
-**자원 5칸 점검** — 이미 공짜로 있는 것:
-사람(사용자·이웃·경쟁자) / 시간(대기·유휴·피크 사이) / 정보·데이터(로그·기록) /
-공간·물건(버려지는 것·부산물) / 기존 기능(다른 목적으로 쓰는 것)
+**5-slot resource check** — what already exists for free:
+people (users, neighbors, competitors) / time (waiting, idle, between peaks) / information and data (logs, records) /
+space and objects (what is thrown away, by-products) / existing functions (things used for another purpose)
 
-## 모순 정식화
+## Contradiction formulation
 
-- **기술적 모순:** "(개선하려는 것 A)를 하면 (악화되는 것 B)가 생긴다. 반대로 하면 반대."
-  → A와 B를 각각 한 단어 이하의 지표로 적는다. (둘 다 측정 가능하면 좋다)
-- **물리적 모순:** "요소 X는 P여야 한다 (이유 1). 동시에 P가 아니어야 한다 (이유 2)."
-  → 같은 요소 하나가 서로 반대 성질을 요구받는 문장으로 압축한다.
-- **분리 4종** — 물리적 모순을 푸는 표준 길:
-  - 시간 분리: 언제는 P, 언제는 P 아님
-  - 공간 분리: 어디는 P, 어디는 P 아님
-  - 조건 분리: 어떤 조건이면 P, 아니면 P 아님
-  - 수준 분리: 전체는 P, 부분은 P 아님 (또는 반대)
-- 모순 행렬(39×39)은 쓰지 않는다. 고전 행렬은 공학 지표 전제이고 칸을 외워 채우면 날조가 된다.
-  행렬을 쓰고 싶으면 출처 표를 열어 그대로 옮기고 출처를 밝힌다.
+- **Technical contradiction:** "Doing (the thing to improve, A) causes (the thing that gets worse, B). Doing the opposite gives the opposite."
+  → Write A and B each as an indicator of one word or less. (Better if both are measurable.)
+- **Physical contradiction:** "Element X must be P (reason 1). At the same time it must not be P (reason 2)."
+  → Compress it into a sentence where one single element is asked for opposite properties.
+- **Four separations** — the standard route to resolve a physical contradiction:
+  - Separation in time: P at one time, not P at another
+  - Separation in space: P in one place, not P in another
+  - Separation by condition: P under one condition, not P otherwise
+  - Separation by level: P for the whole, not P for the parts (or the reverse)
+- Do not use the contradiction matrix (39×39). The classic matrix presupposes engineering parameters, and filling cells from memory becomes fabrication.
+  If you want to use the matrix, open a sourced table, copy it as is, and cite the source.
 
-## 극단화 도구
+## Extremizing tools
 
-발산이 막히거나 스윕 결과가 서로 비슷할 때 쓴다. 최소 2개.
+Use these when divergence stalls or the sweep results look alike. At least 2.
 
-1. **크기·시간·비용 (STC) 0/∞** — 대상의 크기를 0으로/무한으로, 시간을 0초/영원으로, 비용을
-   0원/무제한으로 놓고 "그럼 어떻게 풀리나?"를 6번(2×3) 묻는다. 나온 것 중 현실로 옮길 조각을 남긴다.
-2. **9 windows (시스템 연산자)** — 3×3 표: 세로(상위 시스템 / 지금 시스템 / 하위 요소) × 가로(과거 /
-   현재 / 미래). 9칸을 채우며 "다른 칸에 자원이나 해법이 없나?"를 본다. 특히 상위 시스템 칸에서 문제가
-   사라지는 경우가 많다.
-3. **거꾸로 하기(역발상)** — "이 문제를 **일부러 더 악화시키려면** 어떻게 하나?"를 10개 쓰고 각각 뒤집는다.
-4. **먼 분야 유추** — "이 모순을 이미 푼 곳은?" 생물·의료·게임·물류·요리·군사·스포츠 등 서로 다른 3개
-   분야에서 비슷한 구조의 해법을 찾아 메커니즘만 가져온다. 이름만 빌리지 말고 **작동 방식**을 옮긴다.
-5. **당연한 전제 뒤집기** — 이 문제에서 "당연히 그렇다"고 여기는 전제(누가 하나, 언제 하나, 무엇을
-   주나, 어디서 하나, 왜 하나)를 5개 쓰고 하나씩 반대로 놓는다. "정리는 내가 한다 → 정리가 안 되는
-   구조를 만든다"처럼. 뒤집은 문장에서 나온 해법은 금지 목록과 겹치기 어렵다.
-6. **자원 없이 시작** — 3의 자원 목록에서 가장 쓸모없어 보이는 자원 하나를 골라 그것을 핵심으로 하는
-   해법을 쓴다.
+1. **Size, time, cost (STC) 0/∞** — set the object's size to 0 and to infinity, time to 0 seconds and to forever, and cost to
+   0 and to unlimited, and ask "so how does it get solved?" 6 times (2×3). Keep the pieces of what comes out that can move into reality.
+2. **9 windows (system operator)** — a 3×3 table: rows (super-system / current system / sub-element) × columns (past /
+   present / future). Fill the 9 cells and look for "is there a resource or solution in another cell?" The problem
+   often disappears in the super-system cell in particular.
+3. **Doing it backwards (reverse thinking)** — "How would I **deliberately make this problem worse**?" Write 10 ways and flip each one.
+4. **Far-field analogy** — "Where has this contradiction already been solved?" Find solutions with a similar structure in 3 different
+   fields such as biology, medicine, games, logistics, cooking, the military, or sports, and bring over only the mechanism. Do not borrow just the name; transfer **how it works**.
+5. **Flipping obvious assumptions** — Write 5 assumptions you take for granted in this problem (who does it, when, what is
+   given, where, why) and put each one the opposite way. For example, "I do the tidying → build a structure that never gets messy."
+   Solutions from a flipped sentence rarely overlap with the ban list.
+6. **Start with no resources** — From the resource list in step 3, pick the single resource that looks most useless and write a
+   solution that makes it the core.
 
-## 진화 방향 점검 (선택, 깊게 모드)
+## Evolution-direction check (optional, deep mode)
 
-지금 방식이 다음 중 어디에 있는지 보고 "한 단계 앞"을 그려 본다:
-정적 → 가변 → 자율 조정 / 부품 많음 → 통합 → 없음(기능만 남음) / 수동 → 자동 → 스스로 /
-단일 → 이중 → 다중 → 연속(흐름) / 거친 것 → 정교한 것 → 미세한 것.
+See where the current way sits among the following and sketch "one step ahead":
+static → adjustable → self-adjusting / many parts → integrated → none (only the function remains) / manual → automatic → by itself /
+single → double → multiple → continuous (flow) / coarse → refined → microscopic.
 
-## 수렴 점수
+## Convergence scores
 
-- **새로움 1~5:** 무난한 답 목록의 어느 것과도 작동 원리가 다르면 4~5, 변형이면 1~2.
-- **해볼 만함 1~5:** 사용자의 제약 안에서 내일 시작할 수 있으면 5, 조건이 많으면 낮게.
-- **효과 1~5:** 사용자가 말한 문제를 실제로 푸는 정도.
-- 세 점수가 모두 높은 안은 드물다. 추천은 ① 해볼 만함·효과가 가장 높은 안, ②③ 새로움이 높고 실제로 돌아가는 안, 와일드카드 순으로 채운다(자세한 규칙은 SKILL.md 7단계).
+- **Novelty 1–5:** 4–5 if the operating mechanism differs from every item on the safe-answer list; 1–2 if it is a variant.
+- **Doability 1–5:** 5 if it can start tomorrow within the user's constraints; lower if it has many conditions.
+- **Effect 1–5:** how well it actually solves the problem the user stated.
+- An idea with all three scores high is rare. Fill the recommendations in this order: ① the idea with the highest doability and effect, ②③ ideas with high novelty that really work, then the wildcard (see SKILL.md step 7 for details).
 
-## 출처
+## Sources
 
-- IFR·자원·모순 개념 — 트리즈의 3대 기본개념. 입문 정리:
-  [트리즈닥터, "트리즈 TRIZ란? 기본개념 및 문제해결 활용"](https://blog.naver.com/trizdoctor/223434174901)
-  (신정호, 『트리즈씽킹』 요약 글. 저작자 명시·비영리·변경금지 조건이라 문구는 옮기지 않고 개념만 참고)
+- IFR, resources, and contradiction concepts — the three core concepts of TRIZ. An introductory summary:
+  [TRIZ Doctor blog (Korean), "트리즈 TRIZ란? 기본개념 및 문제해결 활용"](https://blog.naver.com/trizdoctor/223434174901)
+  (a summary of Jeong-ho Shin, *TRIZ Thinking*. Its terms require attribution, non-commercial use, and no changes, so the wording is not copied; only the concepts are referenced)
 - 9 windows — [TRIZ Journal, System Operator Tutorial](https://triz-journal.com/system-operator-tutorial-1-9-windows-world/)
-- 분리 원리·STC·역발상 — 트리즈 교재에서 널리 쓰는 표준 기법(이 저장소가 설명문을 새로 씀)
+- Separation principles, STC, reverse thinking — standard techniques widely used in TRIZ textbooks (the explanatory text in this repository is newly written)

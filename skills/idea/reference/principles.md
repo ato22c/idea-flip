@@ -1,66 +1,67 @@
-# 40가지 발명원리 — 발상용 질문
+# The 40 Inventive Principles — Prompt Questions for Ideation
 
-> 원리의 번호·이름은 알트슐러의 고전 목록이다. 아래 "질문"은 **물리 제품 밖(서비스·소프트웨어·
-> 조직·일상)에서도 쓰도록 이 저장소가 일반화해 쓴 것**이며 원전 문구가 아니다.
-> 28~39번은 원래 물리·화학 원리라 비유로 읽는다. 억지스러우면 `SKIP(이유)`.
+> The numbers and names of the principles are Altshuller's classic list. The "prompt questions" below are
+> **generalized by this repository for use outside physical products (services, software, organizations, daily life)**
+> and are not the original wording.
+> Principles 28–39 are originally physical or chemical principles, so read them as analogies. If it feels forced, `SKIP(reason)`.
 
-## 5개 방향 (빠른 모드: 방향마다 2개, **끌리지 않는 것**부터 고른다)
+## 5 directions (quick mode: 2 per direction, pick **the ones that do not appeal to you** first)
 
-| 방향 | 원리 번호 |
+| Direction | Principle numbers |
 |---|---|
-| A. 쪼개고 뽑고 채우기 | 1 2 3 4 7 17 31 40 |
-| B. 합치고 겸하고 맞추기 | 5 6 12 24 33 |
-| C. 시간·순서 바꾸기 | 9 10 11 15 16 19 20 21 34 35 |
-| D. 뒤집고 떠넘기고 이용하기 | 13 22 23 25 26 27 8 |
-| E. 매체·형태·상태 바꾸기 | 14 18 28 29 30 32 36 37 38 39 |
+| A. Split, extract, fill | 1 2 3 4 7 17 31 40 |
+| B. Merge, double up, match | 5 6 12 24 33 |
+| C. Change time and order | 9 10 11 15 16 19 20 21 34 35 |
+| D. Reverse, hand off, exploit | 13 22 23 25 26 27 8 |
+| E. Change medium, form, state | 14 18 28 29 30 32 36 37 38 39 |
 
-## 목록
+## List
 
-| # | 원리 | 발상 질문 |
+| # | Principle | Prompt question |
 |---|---|---|
-| 1 | 분할 | 덩어리를 기능·시간·고객·단위별로 쪼개 따로 처리하면? 쪼갠 걸 더 잘게 하면? |
-| 2 | 추출 | 문제를 일으키는 부분만 떼어내거나, 꼭 필요한 부분만 남기면? |
-| 3 | 국소적 품질 | 전체를 균일하게 하지 말고 한 곳만 다르게·특화하면? |
-| 4 | 비대칭 | 똑같이 대하던 걸 어떤 사용자·구간·시점에만 치우치게 하면? |
-| 5 | 결합 | 따로 하던 것을 같은 시간·장소·묶음으로 합치면? |
-| 6 | 범용성 | 한 요소가 여러 역할을 맡아 다른 요소를 없앨 수 있나? |
-| 7 | 포개기 | 안에 안을 넣거나, 한 요소가 다른 요소의 빈 곳을 지나가게 하면? |
-| 8 | 무게 보상 | 부담을 반대 방향의 힘·다른 요소와 상쇄시키면? |
-| 9 | 사전 반대조치 | 나중에 생길 나쁜 결과를 미리 반대 방향으로 준비해 두면? (예방접종식) |
-| 10 | 사전 조치 | 필요한 일을 미리 해 두거나 미리 배치해 두면? |
-| 11 | 사전 보상 | 실패할 걸 알고 미리 백업·안전장치를 깔아 두면? |
-| 12 | 등위성 | 옮기고 올리는 수고 대신 환경을 같은 조건·높이로 맞추면? |
-| 13 | 반대로 하기 | 순서·방향·역할을 뒤집으면? (고객이 하던 걸 회사가, 움직이던 걸 고정) |
-| 14 | 곡선화 | 직선·단계형 흐름을 순환·연속 흐름으로 바꾸면? |
-| 15 | 역동성 | 고정된 것을 상황 따라 변하게·움직이게·조절 가능하게 하면? |
-| 16 | 부분·과잉 작용 | 100%가 어려우면 조금 덜/더 하고 나중에 보정하면? |
-| 17 | 차원 변경 | 줄 세우기(1차원)를 평면·입체로, 또는 축을 하나 추가·기울이면? |
-| 18 | 진동 | 주기적으로 흔들고 뒤섞어 굳은 것을 풀 수 없나? (정기 리셋·변동) |
-| 19 | 주기적 작용 | 계속 하던 걸 주기적·맥동으로, 주기를 바꾸면? |
-| 20 | 유익한 작용의 연속 | 놀고 있는 시간·자원을 없애 쉬지 않고 유용한 일을 하게 하면? |
-| 21 | 서두르기 | 위험하거나 해로운 단계를 아주 빨리 통과하면? |
-| 22 | 전화위복 | 해로운 요소를 유용하게 쓰거나, 해로운 것끼리 상쇄시키면? |
-| 23 | 피드백 | 결과를 입력으로 되돌리면? 이미 있다면 시점·강도를 바꾸면? |
-| 24 | 매개체 | 중간에 대리자·완충·중개 요소를 (임시로) 끼우면? |
-| 25 | 셀프서비스 | 대상이 스스로 하게, 부산물·폐기물로 스스로 돌아가게 하면? |
-| 26 | 복제 | 실물 대신 복사본·시뮬레이션·축소판·이미지를 쓰면? |
-| 27 | 값싼 일회용 | 비싸고 오래가는 것을 싼 일회용 여러 개로 바꾸면? |
-| 28 | 다른 채널로 대체 | 시각·텍스트·기계 방식을 소리·촉각·전기·자기 등 다른 채널로 바꾸면? |
-| 29 | 유체화 | 딱딱한 고정 구조를 유체·공기처럼 흐르게 하면? |
-| 30 | 얇은 막 | 두꺼운 구조를 얇은 껍질·레이어로 바꾸거나 얇은 막으로 격리하면? |
-| 31 | 다공질 | 구멍·빈틈·여백을 넣거나, 빈 곳에 다른 기능을 채우면? |
-| 32 | 색·투명도 변화 | 보이게/안 보이게, 상태를 색·표시로 드러내면? |
-| 33 | 동질성 | 상호작용하는 대상을 같은 재질·같은 형식으로 통일하면? |
-| 34 | 폐기와 재생 | 다 쓴 부분은 사라지게/재활용하고, 소모된 건 즉시 보충하면? |
-| 35 | 속성 변경 | 상태·농도·유연성·온도 같은 파라미터를 바꾸면? |
-| 36 | 상전이 | 상태가 바뀌는 순간(전환점)에 일어나는 현상을 이용하면? |
-| 37 | 열팽창 | 조건이 변하면 자연스럽게 늘고 줄어드는 성질을 이용하면? |
-| 38 | 강한 산화제 | 농도·강도를 한 단계 강하게, 순수한 형태로 집중 투입하면? |
-| 39 | 불활성 환경 | 중립·격리된 환경에서 변수를 없애고 하면? |
-| 40 | 복합 재료 | 균질한 하나를 이질적 요소의 조합으로 바꾸면? |
+| 1 | Segmentation | What if you split the lump by function, time, customer, or unit and handled the parts separately? What if you split it even finer? |
+| 2 | Extraction | What if you pull out only the part that causes the problem, or keep only the part that is truly needed? |
+| 3 | Local quality | What if, instead of making everything uniform, you made just one spot different or specialized? |
+| 4 | Asymmetry | What if something treated identically were skewed toward certain users, segments, or moments? |
+| 5 | Merging | What if things done separately were combined into the same time, place, or bundle? |
+| 6 | Universality | Can one element take on several roles so that other elements can be removed? |
+| 7 | Nesting | What if you put one thing inside another, or let one element pass through the empty space of another? |
+| 8 | Counterweight | What if you offset a burden with an opposing force or another element? |
+| 9 | Prior counteraction | What if you prepare in advance, in the opposite direction, for a bad result that will come later? (like a vaccination) |
+| 10 | Prior action | What if you do the needed work in advance, or put things in place beforehand? |
+| 11 | Cushion in advance | What if, knowing something will fail, you set up a backup or safeguard beforehand? |
+| 12 | Equipotentiality | What if, instead of the effort of carrying and lifting, you bring the environment to the same condition or level? |
+| 13 | The other way around | What if you reverse the order, direction, or roles? (the company does what the customer did; fix what used to move) |
+| 14 | Curvature | What if you turn a straight or step-by-step flow into a circular or continuous flow? |
+| 15 | Dynamics | What if something fixed could change, move, or be adjusted depending on the situation? |
+| 16 | Partial or excessive action | If 100% is hard, what if you do a little less or more and correct afterward? |
+| 17 | Another dimension | What if you turn a line (1D) into a plane or a volume, or add or tilt an axis? |
+| 18 | Vibration | Can you loosen what has hardened by periodically shaking and stirring it up? (regular resets, variation) |
+| 19 | Periodic action | What if something done continuously were done periodically or in pulses, or you changed the period? |
+| 20 | Continuity of useful action | What if you eliminate idle time and resources so everything keeps doing useful work without rest? |
+| 21 | Rushing through | What if you pass through a dangerous or harmful step very quickly? |
+| 22 | Blessing in disguise | What if you put a harmful element to use, or let harmful things cancel each other out? |
+| 23 | Feedback | What if you feed the result back as input? If it already exists, what if you change its timing or strength? |
+| 24 | Intermediary | What if you (temporarily) insert a proxy, buffer, or go-between in the middle? |
+| 25 | Self-service | What if the target did it itself, or kept itself running on by-products and waste? |
+| 26 | Copying | What if you used a copy, simulation, scaled-down version, or image instead of the real thing? |
+| 27 | Cheap disposable | What if you replaced one expensive, long-lasting thing with several cheap disposable ones? |
+| 28 | Replace with another channel | What if you swapped a visual, text, or mechanical method for another channel such as sound, touch, electricity, or magnetism? |
+| 29 | Fluidization | What if a rigid, fixed structure flowed like a fluid or air? |
+| 30 | Thin film | What if you replaced a thick structure with a thin shell or layer, or isolated with a thin film? |
+| 31 | Porosity | What if you add holes, gaps, or blank space, or fill empty space with another function? |
+| 32 | Change of color or transparency | What if you made it visible or invisible, or showed its state through color or markings? |
+| 33 | Homogeneity | What if you unified interacting things into the same material or the same format? |
+| 34 | Discard and recover | What if used-up parts disappear or are recycled, and what is consumed is replenished immediately? |
+| 35 | Parameter change | What if you changed a parameter such as state, concentration, flexibility, or temperature? |
+| 36 | Phase transition | What if you exploited what happens at the moment a state changes (the tipping point)? |
+| 37 | Thermal expansion | What if you used the property of expanding and shrinking naturally when conditions change? |
+| 38 | Strong oxidants | What if you raised the concentration or intensity one level, or put it in concentrated, pure form? |
+| 39 | Inert environment | What if you worked in a neutral, isolated environment with the variables removed? |
+| 40 | Composite materials | What if you replaced one homogeneous thing with a combination of dissimilar elements? |
 
-## 출처
+## Sources
 
-- 원리 번호·이름: 알트슐러 40 Inventive Principles (고전 목록, 여러 공개 자료에서 동일)
-- 비물리 분야 해석의 참고: Mann & Domb, *40 Inventive (Business) Principles With Examples* /
-  Kevin Rea, *TRIZ and Software — 40 Principle Analogies* (TRIZ Journal). 문구는 이 저장소의 자체 표현.
+- Principle numbers and names: Altshuller's 40 Inventive Principles (the classic list, identical across many public sources)
+- References for non-physical interpretation: Mann & Domb, *40 Inventive (Business) Principles With Examples* /
+  Kevin Rea, *TRIZ and Software — 40 Principle Analogies* (TRIZ Journal). The wording is this repository's own.
