@@ -91,9 +91,9 @@ the mode name, the number of principles, or "closest common answer / what differ
 
 1. **Conclusion** — "Start with ○○ first. The reason is △△." Write one bold sentence on the very first line with no label or heading.
    Do not list assumptions at length; put them in one line in section 4.
-2. **At-a-glance table + four recommendation cards (①, ②, ③, wildcard)** — first one table titled "📋 At a glance" (columns: idea, one-line summary (about 6 words), start; one row per card).
+2. **At-a-glance table + four recommendation cards (①, ②, ③, wildcard)** — first one table titled "📋 At a glance" (translate the title; columns: idea, one-line summary (about 6 words), start; one row per card).
    The start column is 🟢 start tomorrow / 🟡 within this month / 🔴 risky, test small (the wildcard is always 🔴). Then each card in the format below (within 6 lines).
-   Card titles are a number, a name and the signal like "① Idea name 🟢"; the wildcard is "🎲 Wildcard: idea name". Separate cards with `---`. Do not use TRIZ terms or principle names. The reader must be able to decide and act from this section alone. Follow the **plain-language rules** under "Writing in plain language" below.
+   Card titles are a number, a name and the signal like "① Idea name 🟢"; the wildcard is "🎲 Wildcard: idea name" — translate the word "Wildcard" but never rename or drop it (no "surprise card" or "wild idea"), and use the same word in its table row. Separate cards with `---`. Do not use TRIZ terms or principle names. The reader must be able to decide and act from this section alone. Follow the **plain-language rules** under "Writing in plain language" below.
    Write every heading, table header and field label in the user's language; if that language is not English, no English label may remain anywhere in the answer, so check the headings once before sending. Translate "At a glance", "What to do", "Why it fits", "Where it fails", "First experiment", "Next steps", "Reasoning" and "Appendix".
    ```
    ### ① Idea name (one line)
@@ -102,13 +102,16 @@ the mode name, the number of principles, or "closest common answer / what differ
    - ⚠️ Where it fails: the weakest assumption this idea rests on
    - 🧪 First experiment: who, for how long → what number means continue
    ```
-3. **Next steps** — within 3 lines. If the cause of the problem is still unknown, the first line is "check as cheaply as possible whether the cause matches my guess."
-4. **Reasoning (short)** — within 8 lines in total: the problem redefinition, the contradiction pair, the user's constraint list, and for each recommendation one line on how it resolved the contradiction or where it came from (resource or tool).
-5. **Appendix (within 12 lines)** — the safe-answer list and the titles of divergent ideas (`[principle name] idea`). Use technical terms only here,
+   The wildcard card uses the same fields but its title line is exactly "### 🎲 Wildcard: idea name" and its table row starts with "| 🎲 Wildcard: idea name" (translate only the word "Wildcard", in both places).
+3. **Next steps** (translate this heading into the user's language) — within 3 lines. If the cause of the problem is still unknown, the first line is "check as cheaply as possible whether the cause matches my guess."
+4. **Reasoning (short)** (translate this heading too) — within 8 lines in total: the problem redefinition, the contradiction pair, the user's constraint list, and for each recommendation one line on how it resolved the contradiction or where it came from (resource or tool).
+5. **Appendix (within 12 lines)** (translate this heading too) — the safe-answer list and the titles of divergent ideas (`[principle name] idea`). Use technical terms only here,
    and explain each in parentheses the first time it appears. Do not use arrows or emoji; write sentences (emoji only in the table and card labels).
 
 **Length:** no more than about 1,000 words in quick mode, about 1,800 words in deep mode. If over, cut the appendix first. Sections 1–3 are at least 70% of the text.
 Quality is the clarity of sections 1–2, not length.
+
+**Final check before sending:** read every heading, table header and field label in your answer. If any is in a language other than the user's, rewrite it now.
 
 ## Writing in plain language
 
