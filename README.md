@@ -35,15 +35,15 @@ Side-by-side "without the skill vs with the skill" answers are in [`eval/human/p
 **Option 1 — plugin (recommended)**
 
 ```
-/plugin marketplace add ato22c/triz-ideation-skill
-/plugin install idea-flip@triz-ideation-skill
+/plugin marketplace add ato22c/idea-flip
+/plugin install idea-flip@idea-flip
 ```
 
 **Option 2 — copy the files**
 
 ```bash
-git clone https://github.com/ato22c/triz-ideation-skill
-cp -r triz-ideation-skill/skills/idea-flip ~/.claude/skills/
+git clone https://github.com/ato22c/idea-flip
+cp -r idea-flip/skills/idea-flip ~/.claude/skills/
 ```
 
 **Option 3 — other AI tools (ChatGPT, Gemini, Cursor, Codex, …)**

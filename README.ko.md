@@ -29,15 +29,15 @@
 **방법 1 — 플러그인 (추천)**
 
 ```
-/plugin marketplace add ato22c/triz-ideation-skill
-/plugin install idea-flip@triz-ideation-skill
+/plugin marketplace add ato22c/idea-flip
+/plugin install idea-flip@idea-flip
 ```
 
 **방법 2 — 파일 복사**
 
 ```bash
-git clone https://github.com/ato22c/triz-ideation-skill
-cp -r triz-ideation-skill/skills/idea-flip ~/.claude/skills/
+git clone https://github.com/ato22c/idea-flip
+cp -r idea-flip/skills/idea-flip ~/.claude/skills/
 ```
 
 **방법 3 — 다른 AI 도구 (ChatGPT, Gemini, Cursor, Codex 등)**
