@@ -67,6 +67,21 @@ I'm stuck — not the obvious answer, please
 - Default is **quick** mode. Say "go deep" to sweep all 40 inventive principles.
 - For team/meeting problems it also gives you **questions to ask the team**.
 
+## Getting better ideas
+
+Two to four sentences are enough. Include what the skill uses:
+
+1. **Goal** — what you want, not the solution you already picked
+2. **Constraints** — budget, people, time, what must not change
+3. **The dilemma** — "doing A makes B worse"
+4. **What you already tried** — it goes straight onto the ban list
+
+| Weak | Better |
+|---|---|
+| "Ideas for our meeting" | "Our 10-person weekly meeting is 90 minutes and boring. Without it we duplicate work. We can't cancel it. Already tried: shorter agenda." |
+
+(These tips come from how the skill uses your input; their effect has not been tested separately.)
+
 ## What's different
 
 1. **Ban the obvious first** — common answers are listed as a banned list; variations don't count as new ideas
