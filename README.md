@@ -80,8 +80,6 @@ Two to four sentences are enough. Include what the skill uses:
 |---|---|
 | "Ideas for our meeting" | "Our 10-person weekly meeting is 90 minutes and boring. Without it we duplicate work. We can't cancel it. Already tried: shorter agenda." |
 
-(These tips come from how the skill uses your input; their effect has not been tested separately.)
-
 ## What's different
 
 1. **Ban the obvious first** — common answers are listed as a banned list; variations don't count as new ideas
