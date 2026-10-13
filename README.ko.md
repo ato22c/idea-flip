@@ -6,7 +6,7 @@
 > 이 스킬은 **뻔한 답을 먼저 적어서 금지**시키고, 일부러 엉뚱한 방향에서 후보를 뽑아
 > **내일 시작할 수 있는 작은 실험**까지 붙여 줍니다. (속은 TRIZ인데, 몰라도 됩니다.)
 
-Claude Code용 스킬입니다. 한국어로 물으면 한국어로, 영어로 물으면 영어로 답합니다.
+에이전트 스킬(`SKILL.md`)입니다. Claude Code로 만들고 시험했고, 지침이 일반 텍스트라 다른 AI 채팅·에이전트에 붙여 써도 됩니다. 한국어로 물으면 한국어로, 영어로 물으면 영어로 답합니다.
 
 ## 한눈에 보기
 
@@ -39,6 +39,11 @@ Claude Code용 스킬입니다. 한국어로 물으면 한국어로, 영어로 �
 git clone https://github.com/ato22c/triz-ideation-skill
 cp -r triz-ideation-skill/skills/idea-flip ~/.claude/skills/
 ```
+
+**방법 3 — 다른 AI 도구 (ChatGPT, Gemini, Cursor, Codex 등)**
+
+[`SKILL.md`](skills/idea-flip/SKILL.md)와 [`reference/`](skills/idea-flip/reference)의 파일 2개를 도구의 사용자 지침·프로젝트 지식·규칙 파일에 넣거나, 대화 맨 처음에 붙여 넣은 뒤 문제를 말하면 됩니다.
+Claude에서만 시험했고, 다른 모델에서는 결과가 다를 수 있습니다.
 
 ## 사용법
 

@@ -6,7 +6,7 @@
 > This skill **writes the obvious answers down first and bans them**, forces candidates from unexpected directions,
 > and attaches **a cheap first experiment you can start tomorrow**. (TRIZ under the hood — you don't need to know it.)
 
-A skill for Claude Code. It answers in the language you write in (Korean or English).
+An agent skill (`SKILL.md`) — built and tested with Claude Code, and the instructions are plain text, so they also work pasted into other AI chats and agents. It answers in the language you write in (Korean or English).
 
 ## What you get
 
@@ -45,6 +45,11 @@ Side-by-side "without the skill vs with the skill" answers are in [`eval/human/p
 git clone https://github.com/ato22c/triz-ideation-skill
 cp -r triz-ideation-skill/skills/idea-flip ~/.claude/skills/
 ```
+
+**Option 3 — other AI tools (ChatGPT, Gemini, Cursor, Codex, …)**
+
+Copy [`SKILL.md`](skills/idea-flip/SKILL.md) and the two files in [`reference/`](skills/idea-flip/reference) into your tool's custom instructions / project knowledge / rules file, or paste them at the start of a chat, then describe your problem.
+I have only tested it with Claude; results on other models may differ.
 
 ## Usage
 
