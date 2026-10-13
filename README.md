@@ -53,7 +53,8 @@ I have only tested it with Claude; results on other models may differ.
 
 ## Usage
 
-Call it with a slash, or just ask in plain words.
+Call it with a slash, or just ask in plain words (that works the same everywhere).
+If you installed it as a plugin, the slash command may be namespaced as `/idea-flip:idea-flip`.
 
 ```
 /idea-flip Our weekly meeting is 90 minutes and boring, but we can't cancel it.
