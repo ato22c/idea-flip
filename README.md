@@ -74,7 +74,7 @@ I'm stuck — not the obvious answer, please
 
 ## Honest limits
 
-- In blind AI grading the skill scored far higher (86 vs 46), but **human evaluation was one person** and the results were mixed.
+- In blind AI grading the skill scored far higher (86 vs 46). In a blind A/B test with **15 colleagues** on an **earlier version (v11; the current one is v26)**, 3 problems, the skill won 23–16 (6 ties) with clearly higher **novelty** (4.07 vs 3.02) but lower **readability** (3.38 vs 4.04); one problem went the other way. Later versions added plain-language rules in response, but **the current version has not been re-tested with people.**
   So the claim is not "more creative" — it is **"a procedure that removes the common answers first and gives you odd ones with risks and experiments."**
 - Answers are longer than without the skill.
 - Asking the same question repeatedly tends to produce similar ideas.

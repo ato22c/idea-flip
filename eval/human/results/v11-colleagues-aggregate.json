@@ -1,0 +1,57 @@
+{
+  "note": "v11 답안 기준, 회사 동료 평가자 15명이 A/B 블라인드로 3문제를 평가한 결과의 익명 집계. 이름과 자유 코멘트는 포함하지 않음.",
+  "raters": 15,
+  "problems": [
+    "H1",
+    "H2",
+    "D2"
+  ],
+  "judgments": 45,
+  "wins": {
+    "skill": 23,
+    "base": 16,
+    "tie": 6
+  },
+  "by_problem": {
+    "D2": {
+      "skill": 8,
+      "base": 4,
+      "tie": 3
+    },
+    "H1": {
+      "skill": 10,
+      "base": 3,
+      "tie": 2
+    },
+    "H2": {
+      "skill": 5,
+      "base": 9,
+      "tie": 1
+    }
+  },
+  "mean_scores_1to5": {
+    "new": {
+      "skill": 4.07,
+      "base": 3.02
+    },
+    "do": {
+      "skill": 3.64,
+      "base": 3.58
+    },
+    "read": {
+      "skill": 3.38,
+      "base": 4.04
+    },
+    "fit": {
+      "skill": 3.78,
+      "base": 3.67
+    }
+  },
+  "criteria_ko": {
+    "new": "새로움",
+    "do": "실행 가능성",
+    "read": "이해하기 쉬움",
+    "fit": "내 문제에 맞음"
+  },
+  "sign_test_two_sided_p": 0.34
+}
