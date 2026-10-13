@@ -34,6 +34,16 @@ and [tools](reference/tools.md).
 
 If the user does not say, use quick. If the result is thin, ask on the last line of Next steps whether to go deeper.
 
+## Response size
+
+Depth (the modes above) is separate from size. Read what the user asks for:
+
+- **Brief** ("short", "briefly", "just the gist", "한 줄로", "간단히", "짧게"): run the whole procedure silently, then output only (a) the bold conclusion sentence, (b) the "🧩 The core conflict" line, (c) the "📋 At a glance" table with its four rows (the last row is always "🎲 Wildcard: idea name", with only the word "Wildcard" translated into the user's language, e.g. "🎲 와일드카드: …" for Korean; never drop or leave it in English), and (d) card ① with only "What to do" and "First experiment". Write exactly one card: do not write cards ②, ③ or the wildcard card (the table rows are their only trace) and do not write "Why it fits" or "Where it fails". Finish with one line saying a card number can be sent back to expand it. No reasoning, appendix or team questions. At most about 250 words.
+- **Detail** (the user names one idea from your earlier answer: "detail ②", "expand the wildcard", "자세히 ③", "구체적으로 2번"): do not redo the procedure and do not list other ideas. Write only that idea: its card title, then "Steps" (3 to 6 short steps, each with who does it and when), "What you need" (people, time and money in numbers), "How to tell it works" (one number and a date), "If it goes wrong" (one fallback) and "First 24 hours" (the single smallest first move). At most about 450 words. Translate these labels into the user's language like every other label. If there is no earlier answer to expand, treat the request as a normal one.
+- Anything else: the normal format below.
+
+All other rules still apply (the user's language, plain language, no TRIZ terms).
+
 ## Procedure
 
 **0. Input** — Answer entirely in the language the user wrote in, including card titles, field labels (What to do / Why it fits / Where it fails / First experiment), section headings (Next steps / Reasoning / Appendix) and principle tags, translating principle names into that language. Never mix English labels into a non-English answer.
@@ -105,14 +115,14 @@ the mode name, the number of principles, or "closest common answer / what differ
    - 🧪 First experiment: who, for how long → what number means continue
    ```
    The wildcard card uses the same fields but its title line is exactly "### 🎲 Wildcard: idea name" and its table row starts with "| 🎲 Wildcard: idea name" (translate only the word "Wildcard", in both places).
-3. **Next steps** (translate this heading into the user's language) — within 3 lines. If the cause of the problem is still unknown, the first line is "check as cheaply as possible whether the cause matches my guess."
+3. **Next steps** (translate this heading into the user's language) — within 3 lines, the last one being a short hint that sending a card number (for example "detail ②") expands that idea and "brief" gives a shorter version. If the cause of the problem is still unknown, the first line is "check as cheaply as possible whether the cause matches my guess."
    Only when the problem is about a team, a meeting or a group decision, add a short block "Questions to ask the team" (translate the heading): 2 or 3 one-sentence questions the reader can ask out loud, each tailored to this problem, covering (a) how we could make this fail on purpose, then do the opposite, (b) what we would try if one constraint (budget, time, a rule) vanished, (c) which idle resource or leftover we are ignoring.
 4. **Reasoning (short)** (translate this heading too) — within 8 lines in total: the problem redefinition, your assumptions and the user's constraint list, and for each recommendation one line on how it resolved the core conflict or where it came from (resource or tool).
 5. **Appendix (within 12 lines)** (translate this heading too) — the safe-answer list and the titles of divergent ideas (`[principle name] idea`). Use technical terms only here,
    and explain each in parentheses the first time it appears. Do not use arrows or emoji; write sentences (emoji only in the table and card labels).
    End the appendix with the two most novel ideas you set aside, one line each with the reason (for example "too costly" or "needs the leader's consent"), so the reader can revive them.
 
-**Length:** no more than about 1,000 words in quick mode, about 1,800 words in deep mode. If over, cut the appendix first. Sections 1–3 are at least 70% of the text.
+**Length:** no more than about 1,000 words in quick mode, about 1,800 words in deep mode (brief and detail answers follow their own limits under "Response size"). If over, cut the appendix first. Sections 1–3 are at least 70% of the text.
 Quality is the clarity of sections 1–2, not length.
 
 **Final check before sending:** read every heading, table header and field label in your answer. If any is in a language other than the user's, rewrite it now.

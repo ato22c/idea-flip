@@ -62,6 +62,8 @@ Give me a contrarian idea for getting 20-somethings into our local market
 I'm stuck — not the obvious answer, please
 ```
 
+- **Short or long, your call.** Say "brief" for the conclusion, a table and one card. After an answer, say "detail ②" to expand one idea into steps, what you need, how to tell it works, a fallback and the first 24 hours.
+- **Tip: ask for more in the same conversation.** After the first answer, say "more ideas". The follow-up round skips the cards it already gave, and it can turn up ideas you did not expect. In 6 test runs the follow-up never repeated an earlier card. (Starting the same question over in a fresh chat tends to bring back similar ideas, so continue the conversation instead.)
 - Default is **quick** mode. Say "go deep" to sweep all 40 inventive principles.
 - For team/meeting problems it also gives you **questions to ask the team**.
 

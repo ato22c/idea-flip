@@ -1,7 +1,7 @@
 {
   "name": "idea-flip",
   "description": "Strips out the AI's safe, obvious answers first, then forces non-obvious ideas with a cheap first experiment each. TRIZ under the hood. 뻔한 답을 걷어내고 역발상·참신한 아이디어를 만드는 스킬.",
-  "version": "0.26.0",
+  "version": "0.27.0",
   "author": {
     "name": "ato22c"
   },
