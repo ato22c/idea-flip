@@ -1,4 +1,4 @@
-# 💡 idea — skip the obvious answer, get a genuinely different idea
+# 🙃 idea-flip — skip the obvious answer, get a genuinely different idea
 
 **한국어: [README.ko.md](README.ko.md)**
 
@@ -36,14 +36,14 @@ Side-by-side "without the skill vs with the skill" answers are in [`eval/human/p
 
 ```
 /plugin marketplace add ato22c/triz-ideation-skill
-/plugin install idea@triz-ideation-skill
+/plugin install idea-flip@triz-ideation-skill
 ```
 
 **Option 2 — copy the files**
 
 ```bash
 git clone https://github.com/ato22c/triz-ideation-skill
-cp -r triz-ideation-skill/skills/idea ~/.claude/skills/
+cp -r triz-ideation-skill/skills/idea-flip ~/.claude/skills/
 ```
 
 ## Usage
@@ -51,7 +51,7 @@ cp -r triz-ideation-skill/skills/idea ~/.claude/skills/
 Call it with a slash, or just ask in plain words.
 
 ```
-/idea Our weekly meeting is 90 minutes and boring, but we can't cancel it.
+/idea-flip Our weekly meeting is 90 minutes and boring, but we can't cancel it.
 Give me a contrarian idea for getting 20-somethings into our local market
 I'm stuck — not the obvious answer, please
 ```

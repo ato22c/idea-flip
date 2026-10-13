@@ -1,4 +1,4 @@
-# 💡 idea — 뻔한 답 말고, 진짜 다른 아이디어
+# 🙃 idea-flip — 뻔한 답 말고, 진짜 다른 아이디어
 
 **English: [README.md](README.md)**
 
@@ -12,7 +12,7 @@ Claude Code용 스킬입니다. 한국어로 물으면 한국어로, 영어로 �
 
 같은 질문: *"앱 푸시 알림을 늘리면 재방문은 늘지만 알림을 끄는 사용자도 늘어요. 새로운 접근법은?"*
 
-| 스킬 없이 | `/idea` 사용 |
+| 스킬 없이 | `/idea-flip` 사용 |
 |---|---|
 | "사용자별 상한, 시간대 조정, 종류별 끄기" 같은 **누구나 떠올리는 답** | 먼저 그런 답을 **금지 목록**으로 적어 버림 |
 | 목록이 길게 나열됨 | **결론이 맨 첫 줄**: "내일은 이것부터 해보세요" |
@@ -30,14 +30,14 @@ Claude Code용 스킬입니다. 한국어로 물으면 한국어로, 영어로 �
 
 ```
 /plugin marketplace add ato22c/triz-ideation-skill
-/plugin install idea@triz-ideation-skill
+/plugin install idea-flip@triz-ideation-skill
 ```
 
 **방법 2 — 파일 복사**
 
 ```bash
 git clone https://github.com/ato22c/triz-ideation-skill
-cp -r triz-ideation-skill/skills/idea ~/.claude/skills/
+cp -r triz-ideation-skill/skills/idea-flip ~/.claude/skills/
 ```
 
 ## 사용법
@@ -45,7 +45,7 @@ cp -r triz-ideation-skill/skills/idea ~/.claude/skills/
 슬래시로 부르거나, 그냥 말로 해도 됩니다. TRIZ를 몰라도 됩니다.
 
 ```
-/idea 책상이 3일이면 다시 어질러져요. 정리 습관 말고 다른 방법 없을까요?
+/idea-flip 책상이 3일이면 다시 어질러져요. 정리 습관 말고 다른 방법 없을까요?
 역발상 아이디어 좀 내줘 — 우리 주간회의가 90분인데 지루하고, 없앨 수는 없어요
 뻔한 답 말고 다른 방법 없을까? 막혔어
 ```
@@ -72,8 +72,8 @@ cp -r triz-ideation-skill/skills/idea ~/.claude/skills/
 ## 구성
 
 ```
-skills/idea/SKILL.md           절차·출력 형식
-skills/idea/reference/         40원리, IFR·자원·모순·분리 도구
+skills/idea-flip/SKILL.md           절차·출력 형식
+skills/idea-flip/reference/         40원리, IFR·자원·모순·분리 도구
 .claude-plugin/                플러그인·마켓플레이스 설정
 eval/                          시험문제·채점 하네스·회차별 원본 답안
 docs/EVALUATION.md             평가 기록과 한계

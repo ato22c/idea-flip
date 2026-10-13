@@ -6,7 +6,7 @@
   },
   "plugins": [
     {
-      "name": "idea",
+      "name": "idea-flip",
       "source": "./",
       "description": "뻔한 답을 걷어내고 역발상·참신한 아이디어를 만드는 스킬 (속은 TRIZ). Ideation skill that removes the AI's safe answers first.",
       "version": "0.26.0"

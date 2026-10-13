@@ -1,5 +1,5 @@
 ---
-name: idea
+name: idea-flip
 description: >
   Ideation skill for when you need ideas: contrarian or reverse-thinking, innovative, fresh or creative ideas, "just
   give me some ideas", a non-obvious approach, or a new way out of a stuck problem. Under the hood it uses TRIZ to strip
