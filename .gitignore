@@ -2,3 +2,12 @@
 __pycache__/
 *.pyc
 .remember/
+
+# 사람 평가 정답표: 평가가 끝나기 전에는 공개하지 않는다
+eval/human/keys/
+
+# 사람 평가 2판: 평가가 끝나기 전에는 올리지 않는다(파일명에 스킬/스킬 없음이 드러남). 끝난 뒤 이 두 줄을 지우고 올린다
+eval/human/pairs_v2/
+eval/human/index-v2-r*.html
+# 브라우저 자동화 도구 임시 폴더
+.playwright-mcp/
