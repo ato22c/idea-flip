@@ -61,7 +61,7 @@ def main():
                 if not ideas.exists():
                     raise SystemExit(f"{ideas} 없음: 먼저 normalize_v2.py 를 돌리세요")
                 aid = new_id()
-                pools[arm].append({"id": aid, "full": read(f), "ideas": read(ideas)})
+                pools[arm].append({"id": aid, "ideas": read(ideas)})  # 원본 전체는 넣지 않는다(길이 단서·크기)
                 key["answers"][aid] = {"problem": p["id"], "arm": arm, "file": f.name}
         if not pools["baseline"] or not pools["skill"]:
             raise SystemExit(f"{p['id']}: baseline/skill 답안이 모두 있어야 합니다")

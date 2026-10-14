@@ -106,10 +106,8 @@ textarea{width:100%;min-height:76px;border:1px solid var(--line);border-radius:1
 </div></header>
 
 <main class="wrap">
-  <div class="intro"><b>어떻게 하나요?</b> 문제마다 <b>두 단계</b>로 답안 A·B를 비교합니다.<br>
-  <b>1단계 · 아이디어 비교</b>: 두 답에서 아이디어만 같은 모양으로 정리한 목록을 보고, 아이디어 자체가 더 좋은 쪽을 고릅니다.<br>
-  <b>2단계 · 답변 전체 비교</b>: 실제로 받은 답변 전체를 보고, 읽고 바로 쓰기 좋은 쪽을 고릅니다.<br>
-  어느 쪽이 어떤 방식으로 만든 답인지는 <b>알려주지 않으며</b>, 이 페이지에도 들어 있지 않습니다. 길이가 아니라 <b>내게 얼마나 쓸모 있었는지</b>로 판단해 주세요.
+  <div class="intro"><b>어떻게 하나요?</b> 문제마다 <b>답안 A</b>와 <b>답안 B</b>(두 답에서 아이디어만 같은 모양으로 정리한 목록)를 읽고, 아이디어 자체가 더 좋은 쪽을 고른 뒤 항목별 별점(1~5)을 매겨 주세요.<br>
+  어느 쪽이 어떤 방식으로 만든 답인지는 <b>알려주지 않으며</b>, 이 페이지에도 들어 있지 않습니다. 글솜씨가 아니라 <b>내게 얼마나 쓸모 있을 아이디어인지</b>로 판단해 주세요.
   입력은 이 브라우저에 자동 저장되고, 문제 순서와 A/B 위치는 사람마다 무작위입니다.
   <div style="margin-top:10px"><label>이름(선택) <input id="rater" type="text" maxlength="40" autocomplete="off" style="border:1px solid var(--line);border-radius:8px;padding:6px 10px;background:var(--bg);color:var(--ink);font:inherit;width:200px"></label> <span class="saved">결과 파일 이름에 붙고, 누구 결과인지 구분하는 데만 써요</span></div></div>
   <div id="view"></div>
@@ -129,11 +127,7 @@ var V1 = [
   {id:'do',   t:'실행 가능성',   s:'내 상황에서 실제로 해볼 수 있다'},
   {id:'fit',  t:'내 문제에 맞음', s:'문제의 핵심을 짚고 있다'}
 ];
-var V2 = [
-  {id:'read', t:'이해하기 쉬움', s:'읽고 바로 이해된다'},
-  {id:'use',  t:'바로 쓸 수 있음', s:'읽고 나서 내일 무엇을 할지 알 수 있다'}
-];
-var STORE = 'ideaflip-human-eval-v2-r' + CFG.round;
+var STORE = 'ideaflip-human-eval-v2b-r' + CFG.round;
 var state = {idx:0, order:null, assign:{}, ans:{}, name:''};
 var mobileTab = 'A';
 
@@ -147,9 +141,7 @@ function md(s){ try{ return window.marked ? window.marked.parse(s,{gfm:true,brea
 function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 function el(tag,cls){ var e=document.createElement(tag); if(cls) e.className=cls; return e; }
 
-function ensureOrder(){
-  if(!state.order){ state.order = shuffle(PAIRS.map(function(_,i){return i;})); }
-}
+function ensureOrder(){ if(!state.order){ state.order = shuffle(PAIRS.map(function(_,i){return i;})); } }
 function pairAt(i){ return PAIRS[state.order[i]]; }
 // 이 사람에게 보여줄 답을 쪽(pool)마다 하나씩 무작위로 뽑고, A/B 위치도 무작위로 정한다. 한 번 정하면 저장해 둔다.
 function assignFor(p){
@@ -160,9 +152,8 @@ function assignFor(p){
   return state.assign[p.id];
 }
 function answerById(p,id){ for(var s=0;s<2;s++){ for(var i=0;i<p.pools[s].length;i++){ if(p.pools[s][i].id===id) return p.pools[s][i]; } } return null; }
-function cur(p){ if(!state.ans[p.id]) state.ans[p.id]={stage:1,v1:{w:null,r:{A:{},B:{}}},v2:{w:null,r:{A:{},B:{}}},c:''}; return state.ans[p.id]; }
-function stageDone(v,crit){ if(!v.w) return false; for(var i=0;i<crit.length;i++){ if(!v.r.A[crit[i].id]||!v.r.B[crit[i].id]) return false; } return true; }
-function isDone(p){ var a=state.ans[p.id]; return !!a && stageDone(a.v1,V1) && stageDone(a.v2,V2); }
+function cur(p){ if(!state.ans[p.id]) state.ans[p.id]={w:null,r:{A:{},B:{}},c:''}; return state.ans[p.id]; }
+function isDone(p){ var a=state.ans[p.id]; if(!a||!a.w) return false; for(var i=0;i<V1.length;i++){ if(!a.r.A[V1[i].id]||!a.r.B[V1[i].id]) return false; } return true; }
 function doneCount(){ return PAIRS.filter(isDone).length; }
 
 function renderChips(){
@@ -182,15 +173,9 @@ function render(){
   ensureOrder();
   renderChips();
   var p=pairAt(state.idx), asg=assignFor(p), a=cur(p), v=document.getElementById('view');
-  var stage=a.stage||1, crit=stage===1?V1:V2, sv=stage===1?a.v1:a.v2;
   v.innerHTML='';
   var prob=el('section','problem'); prob.innerHTML='<small>문제 '+(state.idx+1)+' / '+PAIRS.length+'</small><p>'+esc(p.problem)+'</p>';
   v.appendChild(prob);
-
-  var sh=el('div','stage');
-  sh.innerHTML='<span class="pill'+(stage===1?'':' off')+'">1단계</span><span class="pill'+(stage===2?'':' off')+'">2단계</span> '
-    +'<b>'+(stage===1?'아이디어 비교 — 아이디어만 같은 모양으로 정리한 목록':'답변 전체 비교 — 실제로 받은 답변 전체')+'</b>';
-  v.appendChild(sh);
 
   var tabs=el('div','tabs-m'); ['A','B'].forEach(function(k){
     var b=el('button'); b.type='button'; b.textContent='답안 '+k; b.setAttribute('aria-pressed',String(mobileTab===k));
@@ -201,60 +186,48 @@ function render(){
   ['A','B'].forEach(function(k){
     var ans=answerById(p,asg[k]);
     var c=el('article','col '+k+(mobileTab!==k?' hidden-m':''));
-    c.innerHTML='<h2>답안 '+k+'</h2><div class="md">'+md(stage===1?ans.ideas:ans.full)+'</div>';
+    c.innerHTML='<h2>답안 '+k+'</h2><div class="md">'+md(ans.ideas)+'</div>';
     cols.appendChild(c);
   });
   v.appendChild(cols);
 
   var ev=el('section','eval');
-  var q1 = stage===1 ? '1. 아이디어 자체는 어느 쪽이 더 좋은가요?' : '1. 받은 답변은 어느 쪽이 읽고 쓰기에 더 좋은가요?';
-  ev.innerHTML='<h3>'+q1+'</h3>';
+  ev.innerHTML='<h3>1. 아이디어 자체는 어느 쪽이 더 좋은가요?</h3>';
   var w=el('div','winner');
   [['A','답안 A'],['B','답안 B'],['tie','비슷함']].forEach(function(o){
-    var b=el('button','pick'); b.type='button'; b.dataset.v=o[0]; b.textContent=o[1]; b.setAttribute('aria-pressed',String(sv.w===o[0]));
-    b.onclick=function(){ sv.w=o[0]; save(); render(); }; w.appendChild(b); });
+    var b=el('button','pick'); b.type='button'; b.dataset.v=o[0]; b.textContent=o[1]; b.setAttribute('aria-pressed',String(a.w===o[0]));
+    b.onclick=function(){ a.w=o[0]; save(); render(); }; w.appendChild(b); });
   ev.appendChild(w);
-  var hint=el('p','hint'); hint.textContent = stage===1
-    ? '글이 아니라 아이디어의 내용만 보세요. 내 문제에 실제로 쓸모 있을 것 같은 쪽을 고르면 됩니다.'
-    : '길이가 아니라, 읽고 나서 내가 바로 움직일 수 있는지가 기준입니다.';
-  ev.appendChild(hint);
+  var hint=el('p','hint'); hint.textContent='글솜씨가 아니라 아이디어의 내용만 보세요. 내 문제에 실제로 쓸모 있을 것 같은 쪽을 고르면 됩니다.'; ev.appendChild(hint);
 
   var h2=el('h3'); h2.textContent='2. 항목별 별점 (1 = 아쉬움, 5 = 매우 좋음)'; ev.appendChild(h2);
   var t=el('table','rtable'); t.innerHTML='<thead><tr><th>항목</th><th>답안 A</th><th>답안 B</th></tr></thead>';
   var tb=el('tbody');
-  crit.forEach(function(cr){
+  V1.forEach(function(cr){
     var tr=el('tr'); var td0=el('td','crit'); td0.innerHTML=esc(cr.t)+'<small>'+esc(cr.s)+'</small>'; tr.appendChild(td0);
     ['A','B'].forEach(function(k){
       var td=el('td',k+'-col'); var st=el('div','stars');
       for(var n=1;n<=5;n++){ (function(n){
         var b=el('button','st'); b.type='button'; b.textContent=n; b.setAttribute('aria-label',cr.t+' 답안 '+k+' '+n+'점');
-        b.setAttribute('aria-pressed',String(sv.r[k][cr.id]===n));
-        b.onclick=function(){ sv.r[k][cr.id]=n; save(); render(); }; st.appendChild(b); })(n); }
+        b.setAttribute('aria-pressed',String(a.r[k][cr.id]===n));
+        b.onclick=function(){ a.r[k][cr.id]=n; save(); render(); }; st.appendChild(b); })(n); }
       td.appendChild(st); tr.appendChild(td); });
     tb.appendChild(tr); });
   t.appendChild(tb); ev.appendChild(t);
 
-  if(stage===2){
-    var h3=el('h3'); h3.textContent='3. 한마디 (선택) — 해보고 싶은 아이디어, 이상했던 점 등'; ev.appendChild(h3);
-    var ta=el('textarea'); ta.value=a.c||''; ta.setAttribute('aria-label','코멘트');
-    ta.oninput=function(){ a.c=ta.value; save(); }; ev.appendChild(ta);
-  }
+  var h3=el('h3'); h3.textContent='3. 한마디 (선택) — 해보고 싶은 아이디어, 이상했던 점 등'; ev.appendChild(h3);
+  var ta=el('textarea'); ta.value=a.c||''; ta.setAttribute('aria-label','코멘트');
+  ta.oninput=function(){ a.c=ta.value; save(); }; ev.appendChild(ta);
 
   var nav=el('div','nav');
-  var prev=el('button','btn'); prev.type='button';
-  if(stage===2){ prev.textContent='← 1단계로'; prev.onclick=function(){ a.stage=1; save(); render(); window.scrollTo({top:0}); }; }
-  else { prev.textContent='← 이전 문제'; prev.disabled=state.idx===0; prev.onclick=function(){ state.idx--; save(); render(); window.scrollTo({top:0}); }; }
+  var prev=el('button','btn'); prev.type='button'; prev.textContent='← 이전 문제'; prev.disabled=state.idx===0;
+  prev.onclick=function(){ state.idx--; save(); render(); window.scrollTo({top:0}); };
   var next=el('button','btn primary'); next.type='button';
-  var ok=stageDone(sv,crit);
-  var last=state.idx===PAIRS.length-1;
-  next.textContent = stage===1 ? '2단계로 →' : (last?'평가 마치기':'다음 문제 →');
+  var ok=isDone(p), last=state.idx===PAIRS.length-1;
+  next.textContent = last?'평가 마치기':'다음 문제 →';
   next.disabled=!ok;
   next.title=ok?'':'승자 선택과 별점을 모두 채우면 넘어갈 수 있어요';
-  next.onclick=function(){
-    if(stage===1){ a.stage=2; save(); render(); window.scrollTo({top:0}); }
-    else if(last){ showResult(); }
-    else { state.idx++; save(); render(); window.scrollTo({top:0}); }
-  };
+  next.onclick=function(){ if(last){ showResult(); } else { state.idx++; save(); render(); window.scrollTo({top:0}); } };
   nav.appendChild(prev); nav.appendChild(next); ev.appendChild(nav);
   v.appendChild(ev);
   if(doneCount()===PAIRS.length) showResult(true); else document.getElementById('result').innerHTML='';
@@ -263,13 +236,10 @@ function render(){
 // 결과에는 '어느 쪽이 스킬인지'가 들어 있지 않다. 답안 ID(A_id/B_id)만 기록하고, 정답표는 따로 보관된 key 파일로 집계할 때 합친다.
 function rows(){
   return PAIRS.map(function(p){
-    var asg=state.assign[p.id]||{}, a=state.ans[p.id]||{v1:{r:{A:{},B:{}}},v2:{r:{A:{},B:{}}}};
+    var asg=state.assign[p.id]||{}, a=state.ans[p.id]||{r:{A:{},B:{}}};
     var r={round:CFG.round, rater:state.name||'', id:p.id, domain:p.domain, A_id:asg.A||'', B_id:asg.B||'', order:state.order.indexOf(PAIRS.indexOf(p))+1};
-    r.v1_winner=a.v1.w||''; r.v2_winner=a.v2.w||'';
-    ['A','B'].forEach(function(k){
-      V1.forEach(function(c){ r['v1_'+k+'_'+c.id]=a.v1.r&&a.v1.r[k]?a.v1.r[k][c.id]||'':''; });
-      V2.forEach(function(c){ r['v2_'+k+'_'+c.id]=a.v2.r&&a.v2.r[k]?a.v2.r[k][c.id]||'':''; });
-    });
+    r.winner=a.w||'';
+    ['A','B'].forEach(function(k){ V1.forEach(function(c){ r[k+'_'+c.id]=a.r&&a.r[k]?a.r[k][c.id]||'':''; }); });
     r.comment=a.c||'';
     return r; });
 }
