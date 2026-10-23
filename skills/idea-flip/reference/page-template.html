@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="{{LANG}}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@600;700&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<style>
+:root{--paper:#f3f2f8;--surface:#fff;--ink:#12122a;--ink-muted:#565674;--line:#d9d8e6;--flip:#3326e8;--on-flip:#fff;--flip-tint:#e6e3ff;--go:#0b7a57;--soon:#8a5a00;--spark:#c93a06;--spark-flipped:#ff7a3d;--flipped-bg:var(--ink);--flipped-fg:var(--paper);--serif:"Hahmlet","Noto Serif KR","Apple Myungjo",Georgia,serif;--sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#0f0f1c;--surface:#181829;--ink:#ecebfa;--ink-muted:#a5a4c4;--line:#2e2e48;--flip:#9a93ff;--on-flip:#0f0f1c;--flip-tint:#26244a;--go:#4cd0a0;--soon:#f0b93a;--spark:#ff8a55;--spark-flipped:#c93a06;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0f0f1c;--surface:#181829;--ink:#ecebfa;--ink-muted:#a5a4c4;--line:#2e2e48;--flip:#9a93ff;--on-flip:#0f0f1c;--flip-tint:#26244a;--go:#4cd0a0;--soon:#f0b93a;--spark:#ff8a55;--spark-flipped:#c93a06;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.75 var(--sans);word-break:keep-all;overflow-wrap:break-word;-webkit-text-size-adjust:100%}
+main{max-width:960px;margin:0 auto;padding:32px max(16px,env(safe-area-inset-right,0px)) 80px max(16px,env(safe-area-inset-left,0px))}
+p{margin:0}
+.banner{display:grid;grid-template-columns:1fr 320px;min-height:220px;background:var(--flipped-bg);color:var(--flipped-fg);border-radius:8px;overflow:hidden}
+.lede{display:flex;flex-direction:column;justify-content:center;gap:12px;padding:40px 32px}
+.banner h1{margin:0;font:700 clamp(1.6rem,5vw,2.4rem)/1.35 var(--serif);letter-spacing:-.01em;text-wrap:balance}
+.reason{font-size:1rem;opacity:.8}
+.mark{display:block;width:100%;height:100%}
+.mark rect{shape-rendering:crispEdges}.t-flip{fill:var(--flip)}.t-ink{fill:var(--ink)}.t-spark{fill:var(--spark)}.t-tint{fill:var(--flip-tint)}
+.conflict{margin:16px 0 40px;padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:8px;color:var(--ink-muted)}
+h2{margin:40px 0 12px;font:600 1rem/1.5 var(--sans)}
+table{width:100%;border-collapse:collapse;font-size:.94rem}
+th,td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+th{color:var(--ink-muted);font-weight:600;font-size:.82rem}
+td:first-child{font-weight:600}
+td.go{color:var(--go);font-weight:600}td.soon{color:var(--soon);font-weight:600}td.spark{color:var(--spark);font-weight:600}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:24px;margin:16px 0}
+.card.lead{border-color:var(--flip);box-shadow:0 14px 30px -18px rgba(18,18,42,.45)}
+.card.risk{background:var(--flipped-bg);color:var(--flipped-fg);border-color:var(--flipped-bg)}
+.head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;margin-bottom:16px}
+.title{display:flex;align-items:center;gap:12px;min-width:0}
+.title h3{margin:0;font:700 1.375rem/1.45 var(--serif)}
+.card.lead .title h3{font-size:1.75rem;line-height:1.35}
+.num{flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--ink);color:var(--paper);font:700 22px/1 var(--serif)}
+.card.lead .num{width:56px;height:56px;background:var(--flip);color:var(--on-flip)}
+.card.risk .num{background:var(--spark-flipped);color:var(--ink);font-size:24px}
+.pill{display:inline-block;padding:0 12px;border:1px solid currentColor;border-radius:999px;white-space:nowrap;font-size:.8rem;font-weight:600;line-height:1.7}
+.pill.go{color:var(--go)}.pill.soon{color:var(--soon)}.pill.spark{color:var(--flipped-fg);border-color:var(--spark-flipped)}
+.row{display:grid;grid-template-columns:7rem 1fr;gap:4px 12px;padding:12px 0;border-top:1px solid var(--line)}
+.card.risk .row{border-top-color:var(--ink-muted)}
+.row:first-of-type{border-top:0;padding-top:0}
+.row b{font-size:.82rem;font-weight:600;color:var(--ink-muted);padding-top:2px}
+.card.risk .row b{color:var(--flipped-fg);opacity:.75}
+.row.test{margin-top:8px;padding:12px;background:var(--flip-tint);border:0;border-radius:4px;color:var(--ink)}
+.card.risk .row.test{background:transparent;border:1px dashed var(--flipped-fg);color:var(--flipped-fg)}
+.card.risk .row.test b{opacity:1}
+@media (max-width:520px){.banner{grid-template-columns:1fr}.mark{order:-1;height:120px}.lede{padding:24px}.row{grid-template-columns:1fr}}
+ol{padding-left:1.3em}li{margin:6px 0}
+details{margin:12px 0 0;border-top:1px solid var(--line);padding:12px 0;color:var(--ink-muted);font-size:.94rem}
+summary{cursor:pointer;color:var(--ink);font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";display:inline-block;width:1.2em;color:var(--flip)}
+details[open] summary::before{content:"\2212"}
+summary:focus-visible{outline:2px solid var(--flip);outline-offset:3px;border-radius:4px}
+.dead{margin:0;font-size:.9rem;opacity:.85}
+.chip{display:inline-block;margin-left:8px;padding:0 10px;border:1px solid currentColor;border-radius:999px;text-decoration:line-through;opacity:.7}
+.row.scene span{font-size:1.02rem}
+.script{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px 24px}
+.say{display:flex;gap:16px;align-items:flex-start;justify-content:space-between}
+.say p{font:700 1.15rem/1.65 var(--serif)}
+.copy{flex:none;font:600 .85rem/1 var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:8px 12px;cursor:pointer}
+.copy:focus-visible{outline:2px solid var(--flip);outline-offset:3px}
+.qa{display:grid;grid-template-columns:7rem 1fr;gap:4px 12px;padding:10px 0 0;margin-top:10px;border-top:1px solid var(--line)}
+.qa b{font-size:.82rem;font-weight:600;color:var(--ink-muted);padding-top:2px}
+@media (max-width:520px){.qa{grid-template-columns:1fr}.say{flex-direction:column}}
+@media print{body{background:#fff}.card{break-inside:avoid;box-shadow:none}}
+</style>
+</head>
+<body>
+<main>
+<header class="banner"><div class="lede"><h1>{{HEADLINE}}</h1><p class="reason">{{REASON}}</p>
+<p class="dead">{{L_DEAD}} ✗ <span class="chip">{{DEAD1}}</span><span class="chip">{{DEAD2}}</span><span class="chip">{{DEAD3}}</span></p></div><svg class="mark" viewBox="0 0 320 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect class="t-flip" x="0" y="0" width="80" height="80"/><path class="t-tint" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(0 0) rotate(180 40 40)"/><rect class="t-spark" x="80" y="0" width="80" height="80"/><path class="t-tint" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(80 0) rotate(270 40 40)"/><rect class="t-tint" x="160" y="0" width="80" height="80"/><path class="t-spark" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(160 0) rotate(180 40 40)"/><rect class="t-flip" x="240" y="0" width="80" height="80"/><path class="t-spark" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(240 0) rotate(270 40 40)"/><rect class="t-spark" x="0" y="80" width="80" height="80"/><path class="t-tint" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(0 80) rotate(90 40 40)"/><rect class="t-flip" x="80" y="80" width="80" height="80"/><path class="t-tint" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(80 80) rotate(0 40 40)"/><rect class="t-flip" x="160" y="80" width="80" height="80"/><path class="t-spark" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(160 80) rotate(90 40 40)"/><rect class="t-tint" x="240" y="80" width="80" height="80"/><path class="t-spark" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(240 80) rotate(0 40 40)"/><rect class="t-spark" x="0" y="160" width="80" height="80"/><path class="t-flip" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(0 160) rotate(180 40 40)"/><rect class="t-tint" x="80" y="160" width="80" height="80"/><path class="t-flip" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(80 160) rotate(270 40 40)"/><rect class="t-flip" x="160" y="160" width="80" height="80"/><path class="t-tint" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(160 160) rotate(180 40 40)"/><rect class="t-spark" x="240" y="160" width="80" height="80"/><path class="t-tint" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(240 160) rotate(270 40 40)"/><rect class="t-tint" x="0" y="240" width="80" height="80"/><path class="t-flip" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(0 240) rotate(90 40 40)"/><rect class="t-spark" x="80" y="240" width="80" height="80"/><path class="t-flip" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(80 240) rotate(0 40 40)"/><rect class="t-spark" x="160" y="240" width="80" height="80"/><path class="t-tint" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(160 240) rotate(90 40 40)"/><rect class="t-flip" x="240" y="240" width="80" height="80"/><path class="t-tint" d="M0 0H80A80 80 0 0 1 0 80Z" transform="translate(240 240) rotate(0 40 40)"/></svg></header>
+<p class="conflict">{{CONFLICT}}</p>
+
+<h2>{{H_GLANCE}}</h2>
+<table>
+<tr><th>{{TH_IDEA}}</th><th>{{TH_SUMMARY}}</th><th>{{TH_START}}</th></tr>
+<!-- one row per card, same text as the cards: <tr><td>{{NUMBER}} {{NAME}}</td><td>{{SUMMARY}}</td><td class="go">{{SIGNAL}}</td></tr>
+     the last cell's class is go (🟢) | soon (🟡) | spark (🔴); the wildcard row's first cell is "🎲 " + translated Wildcard + ": name" -->
+</table>
+
+<!-- banner chips: the three crossed-out common answers (the same three as the "Common answers" line of the normal format). -->
+<!-- one block per card. class: lead for card ① | none for ②③ | risk for the wildcard. Pill class: go | soon | spark.
+     Badge: the number 1, 2, 3; for the wildcard the 🎲 emoji. The h3 holds only the idea name; the wildcard's h3 is the translated word for "Wildcard" + ": name".
+     The pill text is the same signal (emoji + word) as the table's last cell. The last row of every card is class "row test". -->
+<section class="card lead">
+<div class="head"><div class="title"><span class="num">1</span><h3>{{NAME}}</h3></div><span class="pill go">{{SIGNAL}}</span></div>
+<p class="row scene"><b>{{L_SCENE}}</b><span>{{TEXT}}</span></p>
+<p class="row"><b>{{L_CATCH}}</b><span>{{TEXT}}</span></p>
+<p class="row test"><b>{{L_TEST}}</b><span>{{TEXT}}</span></p>
+</section>
+
+<h2>{{H_PITCH}}</h2>
+<section class="script">
+<div class="say"><p id="say">{{PITCH}}</p><button type="button" class="copy" id="copy" data-done="{{L_COPIED}}" data-fail="{{L_COPY_FAIL}}">{{L_COPY}}</button></div>
+<!-- two pairs, each: -->
+<p class="qa"><b>{{L_OBJECTION}}</b><span>{{TEXT}}</span></p>
+<p class="qa"><b>{{L_ANSWER}}</b><span>{{TEXT}}</span></p>
+</section>
+
+<h2>{{H_NEXT}}</h2>
+<ol><li>{{STEP}}</li></ol>
+<!-- team questions block: only for team, meeting or group problems -->
+
+<details><summary>{{H_REASON}}</summary>{{REASONING}}</details>
+<details><summary>{{H_APPENDIX}}</summary>{{APPENDIX}}</details>
+</main>
+<script>document.getElementById('copy').onclick=function(){var b=this,x=document.getElementById('say').textContent;try{navigator.clipboard.writeText(x).then(function(){b.textContent=b.dataset.done},function(){b.textContent=b.dataset.fail})}catch(e){b.textContent=b.dataset.fail}}</script>
+</body>
+</html>
