@@ -63,6 +63,10 @@ I'm stuck — not the obvious answer, please
 ```
 
 - **Short or long, your call.** Say "brief" for the conclusion, a table and one card. After an answer, say "detail ②" to expand one idea into steps, what you need, how to tell it works, a fallback and the first 24 hours.
+- **As a page or a file.** Say "as a page" for a single HTML page you can open in a browser, or "as a markdown file" for an .md document. If the environment cannot write files, you get it in a code block.
+- **One more card.** After an answer, say "one more card" or "2 more cards" for new cards only, numbered on (up to 3).
+- **Sized to your question.** A short one- or two-line question gets the short format (conclusion, table, one card) automatically. State your constraints or what you have tried and you get the full format.
+- **Backfire (experimental).** Say "make it worse" for three "this would surely make it worse" cards instead of solutions. Flip them into your own ideas.
 - **Tip: ask for more in the same conversation.** After the first answer, say "more ideas". The follow-up round skips the cards it already gave, and it can turn up ideas you did not expect. In 6 test runs the follow-up never repeated an earlier card. (Starting the same question over in a fresh chat tends to bring back similar ideas, so continue the conversation instead.)
 - Default is **quick** mode. Say "go deep" to sweep all 40 inventive principles.
 - For team/meeting problems it also gives you **questions to ask the team**.
@@ -86,15 +90,16 @@ Two to four sentences are enough. Include what the skill uses:
 2. **Forced starting points** — the 40 inventive principles are *assigned*, not chosen by the model
 3. **Wildcard** — one deliberately odd idea, always labeled risky, with a cheap test attached
 4. **Ends in an experiment** — every idea gets a "won't work if…" and a numeric first test
+5. **A pitch you can use** — one sentence to say to the person who has to approve idea ①, plus two likely objections with answers
 
 ## Honest limits
 
-- In blind AI grading the skill scored far higher (86 vs 46). In a blind A/B test with **15 colleagues** on an **earlier version (v11; the current one is v26)**, 3 problems, the skill won 23–16 (6 ties) with clearly higher **novelty** (4.07 vs 3.02) but lower **readability** (3.38 vs 4.04); one problem went the other way. Later versions added plain-language rules in response, but **the current version has not been re-tested with people.**
+- In blind AI grading the skill scored far higher (86 vs 46). In a blind A/B test with **15 colleagues** on an **earlier version (v11; the current one is v31)**, 3 problems, the skill won 23–16 (6 ties) with clearly higher **novelty** (4.07 vs 3.02) but lower **readability** (3.38 vs 4.04); one problem went the other way. Later versions added plain-language rules in response, but **the current version has not been re-tested with people.**
   So the claim is not "more creative" — it is **"a procedure that removes the common answers first and gives you odd ones with risks and experiments."**
 - Answers are longer than without the skill.
 - Asking the same question repeatedly tends to produce similar ideas.
 
-Test problems, rubric, the 26 revisions (including rules that didn't work and were reverted), and all limits: **[docs/EVALUATION.md](docs/EVALUATION.md)** (in Korean).
+Test problems, rubric, the 31 revisions (including rules that didn't work and were reverted), and all limits: **[docs/EVALUATION.md](docs/EVALUATION.md)** (in Korean).
 
 ## References
 
